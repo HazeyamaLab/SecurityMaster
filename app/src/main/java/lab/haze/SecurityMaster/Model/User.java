@@ -8,20 +8,16 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Data
 public class User {
 	@Id
 	private String id;
 	private String name;
+	private String companyName;
+	private int companyWorth;
 	private String password;
-	private String role;
-	private String created_user;
-	private Date created_at;
-	private String updated_user;
-	private Date updated_at;
-	private String deleted_user;
-	private Date deleted_at;
-	private int version;
+	private int role;
+
 }
 

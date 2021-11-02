@@ -1,6 +1,8 @@
 package lab.haze.SecurityMaster.Controller;
 
 import java.util.List;
+
+import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ import lab.haze.SecurityMaster.Service.UserServiceImpl;
 public class AuthController {
     @Autowired
     private UserServiceImpl userServiceImpl;
+
+    @Autowired
+    UserRepository userRepository;
 
     @RequestMapping("/")
     public String index() {
@@ -42,14 +47,16 @@ public class AuthController {
     }
 
     @PostMapping("/regist")
-    public String postRequest(@RequestParam("id") String id, @RequestParam("pass") String pass, Model model) {
+    public String postRequest(@RequestParam("id") String id, @RequestParam("pass") String pass, @RequestParam("name") String name ,@RequestParam("cName") String cName, Model model) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         User user = new User();
         user.setId(id);
-        System.out.println(encoder.encode(pass));
+        //System.out.println(encoder.encode(pass));
         user.setPassword(encoder.encode(pass));
-        //UserRepository.registUser(user);
-
+        user.setCompanyName(cName);
+        user.setCompanyWorth(10000);
+        user.setRole(1);
+        userRepository.save(user);
         return "regcon";
     }
 
