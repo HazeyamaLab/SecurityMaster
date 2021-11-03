@@ -7,8 +7,6 @@
 <body>
 <h1>Login page</h1>
 
-<p>Example user: user / password</p>
-
 <form th:action="@{/login}" method="post">
     <p th:if="${loginError}"><em>Username or password is wrong.</em></p>
     <p><label for="username">Username</label>:
@@ -18,7 +16,7 @@
     <p><input type="submit" value="Log in" /></p>
 </form>
 
-<p><a th:href="@{/signup}">Sign up</a></p>
+<p><a th:href="@{/regist}">Sign up</a></p>
 
 <p><a th:href="@{/}">Back to index</a></p>
 </body>

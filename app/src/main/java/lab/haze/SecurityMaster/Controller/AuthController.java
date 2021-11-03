@@ -51,18 +51,22 @@ public class AuthController {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         User user = new User();
         user.setId(id);
-        //System.out.println(encoder.encode(pass));
+        System.out.println(encoder.encode(pass));
         user.setPassword(encoder.encode(pass));
         user.setCompanyName(cName);
         user.setCompanyWorth(10000);
-        user.setRole(1);
+        user.setName(name);
+        user.setRole("user");
         userRepository.save(user);
         return "regcon";
     }
 
     @PostMapping("/login")
-    public String loginPost() {
-        return "redirect:/login-error";
+    public String postRequest(@RequestParam("username") String id, @RequestParam("password") String pass,Model model) {
+        System.out.println("kitaaaaaa");
+        System.out.println(id);
+        System.out.println(pass);
+        return "/login";
     }
     
     @GetMapping("/login-error")
