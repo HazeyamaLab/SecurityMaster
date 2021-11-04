@@ -2,8 +2,10 @@ package lab.haze.SecurityMaster.Controller;
 
 import java.util.List;
 
+import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
 import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +37,8 @@ public class AuthController {
     }
 
     @GetMapping("/hidden")
-    public String hidden() {
+    public String hidden(Authentication authentication) {
+        System.out.println(authentication.getRealm());
         return "hidden";
         
     }

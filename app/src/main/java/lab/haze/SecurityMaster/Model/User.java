@@ -31,6 +31,7 @@ public class User implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Collection<GrantedAuthority> authorityList = new ArrayList<>();
 		authorityList.add(new SimpleGrantedAuthority("USER"));
+		System.out.println(authorityList);
 		return authorityList;
 	}
 
