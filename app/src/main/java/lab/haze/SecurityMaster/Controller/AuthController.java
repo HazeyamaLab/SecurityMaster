@@ -5,7 +5,8 @@ import java.util.List;
 import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
 import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,10 +37,14 @@ public class AuthController {
         return "login";
     }
 
-    @GetMapping("/hidden")
-    public String hidden(Authentication authentication) {
-        System.out.println(authentication.getRealm());
-        return "hidden";
+    
+    @GetMapping("/menu")
+    public String menu(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        System.out.println(name);
+        model.addAttribute("name", name);
+        return "menu";
         
     }
 
