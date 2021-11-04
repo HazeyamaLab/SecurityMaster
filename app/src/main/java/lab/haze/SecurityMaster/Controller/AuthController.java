@@ -34,6 +34,12 @@ public class AuthController {
         return "login";
     }
 
+    @GetMapping("/hidden")
+    public String hidden() {
+        return "hidden";
+        
+    }
+
     @GetMapping("/regist")
     public String regist() {
         return "regist";
@@ -56,16 +62,13 @@ public class AuthController {
         user.setCompanyName(cName);
         user.setCompanyWorth(10000);
         user.setName(name);
-        user.setRole("user");
+        user.setRole("USER");
         userRepository.save(user);
         return "regcon";
     }
 
     @PostMapping("/login")
     public String postRequest(@RequestParam("username") String id, @RequestParam("password") String pass,Model model) {
-        System.out.println("kitaaaaaa");
-        System.out.println(id);
-        System.out.println(pass);
         return "/login";
     }
     

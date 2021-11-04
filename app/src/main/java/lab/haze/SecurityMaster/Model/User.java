@@ -6,9 +6,11 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Id;
@@ -26,11 +28,13 @@ public class User implements UserDetails {
 	private String role;
 
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities(){
-		return null;
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		Collection<GrantedAuthority> authorityList = new ArrayList<>();
+		authorityList.add(new SimpleGrantedAuthority("USER"));
+		return authorityList;
 	}
 
-	@Override 
+	@Override
 	public String getUsername() {
 		return this.id;
 	}

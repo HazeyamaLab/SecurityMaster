@@ -14,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 import lab.haze.SecurityMaster.Repository.UserRepository;
-import lab.haze.SecurityMaster.Service.UserDetailsService;
 import lab.haze.SecurityMaster.Service.UserDetailsServiceImpl;
 import lab.haze.SecurityMaster.Service.UserServiceImpl;
 
@@ -36,18 +35,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 .antMatchers("/", "/regist", "/regcon","/getuser", "/login", "/login-error", "/css/**" , "/js/**").permitAll()
-                .antMatchers("/**").hasRole("user")
+                .antMatchers("/**").hasRole("USER")
                 .and()
             .formLogin()
                 .loginPage("/login")
                 .failureUrl("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/succces");
+                .defaultSuccessUrl("/hidden");
                 }
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
 
     @Autowired
     void configureAuthenticationManager(AuthenticationManagerBuilder auth) throws Exception{
