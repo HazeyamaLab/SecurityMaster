@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lab.haze.SecurityMaster.Model.User;
+import lab.haze.SecurityMaster.Model.UserBadge;
+import lab.haze.SecurityMaster.Repository.UserBadgeRepository;
 import lab.haze.SecurityMaster.Repository.UserRepository;
 import lab.haze.SecurityMaster.Service.UserServiceImpl;
 
@@ -26,6 +28,9 @@ public class AuthController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    UserBadgeRepository userBadgeRepository;
 
     @RequestMapping("/")
     public String index() {
@@ -64,6 +69,7 @@ public class AuthController {
     public String postRequest(@RequestParam("id") String id, @RequestParam("pass") String pass, @RequestParam("name") String name ,@RequestParam("cName") String cName, Model model) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         User user = new User();
+        UserBadge userBadge = new UserBadge();
         user.setId(id);
         System.out.println(encoder.encode(pass));
         user.setPassword(encoder.encode(pass));
@@ -71,7 +77,9 @@ public class AuthController {
         user.setCompanyWorth(10000);
         user.setName(name);
         user.setRole("USER");
+        userBadge.setId(id);
         userRepository.save(user);
+        userBadgeRepository.save(userBadge);
         return "regcon";
     }
 
