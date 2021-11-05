@@ -8,6 +8,5 @@ import lab.haze.SecurityMaster.Model.User;
 
 public interface UserService{
     List<User> getUsers();
-    
-
+    List<User> getRanking();
 }

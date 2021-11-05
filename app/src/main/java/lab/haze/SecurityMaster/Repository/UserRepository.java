@@ -15,6 +15,4 @@ import lab.haze.SecurityMaster.Model.User;
 public interface UserRepository extends JpaRepository<User, String> {
     List<User> findAll();
     User getOne(String id);
-
-    
 }

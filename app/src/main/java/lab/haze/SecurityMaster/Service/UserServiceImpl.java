@@ -3,6 +3,7 @@ package lab.haze.SecurityMaster.Service;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,7 +22,13 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return userRepository.findAll();
+    }
+    
+    public List<User> getRanking() {
+        return userRepository.findAll(
+            Sort.by(Sort.Direction.DESC,"companyWorth")
+        );
     }
 }
