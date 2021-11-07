@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    SecurityMasterにようこそ,<span th:text="${userName}"></span>さん <br>
+    あなたは<span th:text="${companyName}"></span>のセキュリティ担当者に採用されました．<br>
+    これから様々なセキュリティリスクについて学習し，<span th:text="${companyName}"></span>を危機から守りましょう．<br>
+    <a href="/learn/injection">学習に進む</a><br>
+    <a href="/learn">メニューに戻る</a><br>
+    
+</body>
+</html>

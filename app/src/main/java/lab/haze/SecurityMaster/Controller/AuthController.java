@@ -6,6 +6,7 @@ import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
 import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -44,11 +45,9 @@ public class AuthController {
 
     
     @GetMapping("/menu")
-    public String menu(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
-        System.out.println(name);
-        model.addAttribute("name", name);
+    public String menu(Model model,@AuthenticationPrincipal User user ) {
+        System.out.println(user);
+        model.addAttribute("user", user);
         return "menu";
         
     }

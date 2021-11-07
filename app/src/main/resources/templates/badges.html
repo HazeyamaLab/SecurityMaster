@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <span th:text="${userBadge.getId()}"></span>,There are your brillant badges!<br>
+    <span th:text="${userName}"></span>,There are your brillant badges!<br>
     <th:block th:if="${userBadge.isBadge1() == true}">
         <p>Your badge1</p>
     </th:block>

@@ -8,7 +8,9 @@
 </head>
 <body>
     Welcome to SecurityMaster<br>
-    <span th:text="${name}"></span>さん <br>
+    <span th:text="${user.getCompanyName()}"></span>所属 <span th:text="${user.getName()}"></span>さん<br>
+    現在の<span th:text="${user.getCompanyName()}"></span>の企業価値:<span th:text="${user.getCompanyWorth()}"></span>$<br>
+
     <a href="/learn">Click here to learning</a><br>
     <a href="/ranking">Click here to show ranking</a><br>
     <a href="/badges">Click here to show your badges</a><br>

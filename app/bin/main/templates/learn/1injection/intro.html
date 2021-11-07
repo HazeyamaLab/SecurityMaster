@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>学習の概要</h2>
+    この章では"SQLインジェクション"について学習します．<br>
+    データベースと連携したウェブアプリケーションの多くは，利用者からの入力情報を基に SQL 文（データベースへの命令文）を組み立てています．その際，SQL 文の組み立て方法に問題がある場合，攻撃によってデータベースの不正利用をまねく可能性があります．<br>
+    このような問題を「SQL インジェクションの脆弱性」と呼び，問題を悪用した攻撃を、「SQL インジェクション攻撃」と呼びます．<br>
+    <h2>発生しうる脅威</h2>
+    SQL インジェクション攻撃により，発生しうる脅威は次のとおりです．
+    <ul>
+        <li>データベースに蓄積された非公開情報の閲覧</li>
+        個人情報の漏洩が発生する恐れがあります．
+        <li>データベースに蓄積された情報の改ざん、消去</li>
+        ウェブページの改ざん，パスワードの不正な変更などの恐れがあります．
+        <li>認証回避による不正ログイン</li>
+        不正なログインを許可する恐れがあります．
+    </ul>
+    <a href="/learn/1injection/lecture">次へ</a>
+    
+</body>
+</html>
