@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    Welcome to SecurityMaster<br>
+    <nav class="navbar navbar-default">
+        <h3>Security Masterへようこそ</h3>
+    </nav>
+    
     <span th:text="${user.getCompanyName()}"></span>所属 <span th:text="${user.getName()}"></span>さん<br>
     現在の<span th:text="${user.getCompanyName()}"></span>の企業価値:<span th:text="${user.getCompanyWorth()}"></span>$<br>
-
-    <a href="/learn">Click here to learning</a><br>
+    現在の学習進捗状況: 1章学習完了/全７章<br>
+    <a href="/learn">Click here to learn</a><br>
     <a href="/ranking">Click here to show ranking</a><br>
     <a href="/badges">Click here to show your badges</a><br>
 </body>

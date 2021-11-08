@@ -3,18 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <span th:text="${userName}"></span>,There are your brillant badges!<br>
+    <span th:text="${userName}"></span>さん，今までに獲得したバッジは以下のとおりです．<br>
+
+    <table class="table-striped">  
+        <tr>
+            <th scope="col">
+                実績名
+            </th>
+            <th scope="col">
+                バッジ
+            </th>
+            <th scope="col">
+                条件
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                Hello Security!
+            </td>
+            <td>
+                <img src="imgs/broz.png" alt="">
+            </td>
+            <td>
+                Prologueを読む
+            </td>
+        </tr>
+        <tr>
+            <td>
+                インジェクションの学習者
+            </td>
+            <td>
+                <img th:src="@{/imgs/broz.png}" alt="">
+                
+            </td>
+            <td>
+                SQLインジェクションの学習修了
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                未達成の実績
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                SQLインジェクションの学習を満点で修了
+            </td>
+        </tr>
+    </table>
+
+    <!--
     <th:block th:if="${userBadge.isBadge1() == true}">
         <p>Your badge1</p>
     </th:block>
     <th:block th:if="${userBadge.isBadge2() == true}">
         <p>Your badge2</p>
     </th:block>
-
+    -->
 
 
 <a href="menu">click here to menu</a>

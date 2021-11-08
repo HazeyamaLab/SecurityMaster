@@ -4,14 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
-    There are "SECURITY MASTERS"<br>
+    企業価値上位3名のランキングです．<br>
+    <table class="table-striped">  
+        <tr>
+            <th scope="col">
+                順位
+            </th>
+            <th scope="col">
+                企業名
+            </th>
+            <th scope="col">
+                企業価値
+            </th>
+        </tr>
+        <tr>
+            <td>
+                1st.
+            </td>
+            <td>
+                <span th:text="${list.get(0).getName()}"></span>
+            </td>
+            <td>
+                <span th:text="${list.get(0).getCompanyWorth()}"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                2nd.
+            </td>
+            <td>
+                <span th:text="${list.get(1).getName()}"></span>
+            </td>
+            <td>
+                <span th:text="${list.get(1).getCompanyWorth()}"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                3rd.
+            </td>
+            <td>
+                <span th:text="${list.get(2).getName()}"></span>
+            </td>
+            <td>
+                <span th:text="${list.get(2).getCompanyWorth()}"></span>
+            </td>
+        </tr>
+    </table>
 
-    1st:<span th:text="${list.get(0).getName()}"></span> Company Worth:<span th:text="${list.get(0).getCompanyWorth()}"></span>$ <br>
-    2nd:<span th:text="${list.get(1).getName()}"></span> Company Worth:<span th:text="${list.get(1).getCompanyWorth()}"></span>$ <br>
-    3rd:<span th:text="${list.get(2).getName()}"></span> Company Worth:<span th:text="${list.get(2).getCompanyWorth()}"></span>$ <br>
 <a href="menu">click here to menu</a>
 
 
