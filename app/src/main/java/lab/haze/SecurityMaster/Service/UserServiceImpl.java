@@ -31,4 +31,12 @@ public class UserServiceImpl implements UserService {
             Sort.by(Sort.Direction.DESC,"companyWorth")
         );
     }
+    
+    public User getUser(String id){
+        return userRepository.getById(id);
+    }
+    
+    public void updateWorth(User user) {
+        userRepository.save(user);
+    }
 }
