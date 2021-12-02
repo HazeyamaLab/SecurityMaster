@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import lab.haze.SecurityMaster.Model.User;
 import lab.haze.SecurityMaster.Model.UserBadge;
 import lab.haze.SecurityMaster.Repository.UserBadgeRepository;

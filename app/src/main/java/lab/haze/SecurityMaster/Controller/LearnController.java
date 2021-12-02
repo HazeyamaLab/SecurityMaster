@@ -2,6 +2,9 @@ package lab.haze.SecurityMaster.Controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +22,9 @@ public class LearnController {
 
     @Autowired
     UserServiceImpl userServiceImpl;
+
+    @Autowired
+    HttpSession httpSession;
 
 
 
@@ -50,11 +56,21 @@ public class LearnController {
     }
 
     @PostMapping("/learn/1injection/test1")
-    public String postTest1(@RequestParam("ans") String ans) {
+    public String postTest1(@RequestParam("ans") String ans,@AuthenticationPrincipal User user) {
         int ians = Integer.parseInt(ans);
         if (ians != 4) {
+            double worth = user.getCompanyWorth();
+            worth = worth * 0.9;
+            user.setCompanyWorth((int) worth);
+            userServiceImpl.updateWorth(user);
             return "/learn/1injection/inc1";
         } else {
+            System.out.println("uoooooooooooooooooooooo");
+            double worth = user.getCompanyWorth();
+            worth = worth * 1.2;
+            System.out.println(worth);
+            user.setCompanyWorth((int) worth);
+            userServiceImpl.updateWorth(user);
             return "/learn/1injection/col1";
         }
     }
@@ -62,20 +78,13 @@ public class LearnController {
     @GetMapping("/learn/1injection/inc1")
     public String injInc1(@AuthenticationPrincipal User user){
         //企業価値変更のコード
-        double worth = user.getCompanyWorth();
-        worth = worth * 0.9;
-        user.setCompanyWorth((int) worth);
-        userServiceImpl.updateWorth(user);
+
         return "/learn/1injection/inc1";
     }
 
     @GetMapping("/learn/1injection/col1")
     public String injCol1(@AuthenticationPrincipal User user) {
         //企業価値変更のコード
-        double worth = user.getCompanyWorth();
-        worth = worth * 0.9;
-        user.setCompanyWorth((int) worth);
-        userServiceImpl.updateWorth(user);
         return "/learn/1injection/col1";
     }
     
@@ -102,7 +111,7 @@ public class LearnController {
     public String injCol2(@AuthenticationPrincipal User user) {
         //企業価値変更のコード
         double worth = user.getCompanyWorth();
-        worth = worth * 1.1;
+        worth = worth * 1.2;
         user.setCompanyWorth((int) worth);
         userServiceImpl.updateWorth(user);
         return "/learn/1injection/col2";
