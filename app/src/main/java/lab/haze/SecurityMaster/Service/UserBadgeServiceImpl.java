@@ -21,5 +21,9 @@ public class UserBadgeServiceImpl implements UserBadgeService {
     public UserBadge getUserBadge(String id) {
         return userBadgeRepository.getOne(id);
     }
+
+    public void updateBadge(UserBadge userBadge){
+        userBadgeRepository.save(userBadge);
+    }
     
 }
