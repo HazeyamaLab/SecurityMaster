@@ -68,19 +68,25 @@ public class AuthController {
     @PostMapping("/regist")
     public String postRequest(@RequestParam("id") String id, @RequestParam("pass") String pass, @RequestParam("name") String name ,@RequestParam("cName") String cName, Model model) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        User user = new User();
-        UserBadge userBadge = new UserBadge();
-        user.setId(id);
-        System.out.println(encoder.encode(pass));
-        user.setPassword(encoder.encode(pass));
-        user.setCompanyName(cName);
-        user.setCompanyWorth(10000);
-        user.setName(name);
-        user.setRole("USER");
-        userBadge.setId(id);
-        userRepository.save(user);
-        userBadgeRepository.save(userBadge);
-        return "regcon";
+        boolean isAccountExists = userRepository.existsById(id);
+        //System.out.println(existUser);
+        if(isAccountExists){
+            return "useralreadyexists";
+        }else{
+            User user = new User();
+            UserBadge userBadge = new UserBadge();
+            user.setId(id);
+            System.out.println(encoder.encode(pass));
+            user.setPassword(encoder.encode(pass));
+            user.setCompanyName(cName);
+            user.setCompanyWorth(10000);
+            user.setName(name);
+            user.setRole("USER");
+            userBadge.setId(id);
+            userRepository.save(user);
+            userBadgeRepository.save(userBadge);
+            return "regcon";
+        }
     }
 
     @PostMapping("/login")

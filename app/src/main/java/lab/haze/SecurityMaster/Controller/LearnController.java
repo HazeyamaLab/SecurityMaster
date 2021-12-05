@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import lab.haze.SecurityMaster.Model.User;
 import lab.haze.SecurityMaster.Model.UserBadge;
 import lab.haze.SecurityMaster.Repository.UserRepository;
-import lab.haze.SecurityMaster.Service.BadgeTimelineService;
+import lab.haze.SecurityMaster.Service.BadgeTimelineServiceImpl;
 import lab.haze.SecurityMaster.Service.UserBadgeServiceImpl;
 import lab.haze.SecurityMaster.Service.UserServiceImpl;
 @Controller
@@ -31,7 +31,7 @@ public class LearnController {
     UserBadgeServiceImpl userBadgeServiceImpl;
 
     @Autowired
-    BadgeTimelineService badgeTimelineService;
+    BadgeTimelineServiceImpl BadgeTimelineServiceImpl;
 
     @Autowired
     HttpSession httpSession;
@@ -48,6 +48,8 @@ public class LearnController {
     public String learn(){
         return "/learn";
     }
+
+    //---------------------Injection---------------------------------------------------------------
 
     @GetMapping("/learn/1injection/intro")
     public String learn1(){
@@ -154,6 +156,8 @@ public class LearnController {
         httpSession.invalidate();
         return "/learn/1injection/fin";
     }
+
+    //-----------------------------------------------------------------------------------
 
     
 
