@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 import lab.haze.SecurityMaster.Repository.UserRepository;
@@ -39,11 +40,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin()
                 .loginPage("/login")
-                .failureUrl("/login")
+                .failureUrl("/loginfai")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/menu");
-                }
+        http
+            .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/");
+    }
+            
+            
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;

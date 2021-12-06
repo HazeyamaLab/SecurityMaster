@@ -52,6 +52,10 @@ public class AuthController {
         return "login";
     }
 
+    @GetMapping("/loginfai")
+    public String loginfai() {
+        return "loginfai";
+    }
     
     @GetMapping("/menu")
     public String menu(Model model,@AuthenticationPrincipal User user) {
@@ -81,7 +85,6 @@ public class AuthController {
 
             detail_list.add(badgeTimelineDetail);
         }
-        System.out.println(detail_list);
         model.addAttribute("list", detail_list);
         return "menu";
     }
