@@ -1,5 +1,7 @@
 package lab.haze.SecurityMaster.Service;
 
+import java.util.List;
+
 import org.apache.catalina.UserDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,11 @@ public class UserBadgeServiceImpl implements UserBadgeService {
 
     public void updateBadge(UserBadge userBadge){
         userBadgeRepository.save(userBadge);
+    }
+
+    public List<UserBadge> findAll() {
+        return userBadgeRepository.findAll();
+        
     }
     
 }

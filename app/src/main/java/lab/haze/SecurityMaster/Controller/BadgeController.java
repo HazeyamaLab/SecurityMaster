@@ -1,5 +1,8 @@
 package lab.haze.SecurityMaster.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import lab.haze.SecurityMaster.Model.User;
 import lab.haze.SecurityMaster.Model.UserBadge;
 import lab.haze.SecurityMaster.Repository.UserBadgeRepository;
+import lab.haze.SecurityMaster.Repository.UserRepository;
 import lab.haze.SecurityMaster.Service.UserBadgeServiceImpl;
 
 @Controller
@@ -18,6 +22,9 @@ public class BadgeController {
     
     @Autowired
     UserBadgeRepository userBadgeRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Autowired
     UserBadgeServiceImpl userBadgeServiceImpl;
@@ -29,6 +36,108 @@ public class BadgeController {
         model.addAttribute("userName", user.getName());
         UserBadge userBadge = userBadgeServiceImpl.getUserBadge(id);
         model.addAttribute("userBadge", userBadge);
-        return "badges";
+        double currentUser = userBadgeServiceImpl.findAll().size();
+        List<Double> persentList = new ArrayList<Double>();
+        List<UserBadge> userBadgeList = new ArrayList<>();
+        userBadgeList = userBadgeServiceImpl.findAll();
+        double hasBadge1 = 0;
+        double hasBadge2 = 0;
+        double hasBadge3 = 0;
+        double hasBadge4 = 0;
+        double hasBadge5 = 0;
+        double hasBadge6 = 0;
+        double hasBadge7 = 0;
+        double hasBadge8 = 0;
+        double hasBadge9 = 0;
+        double hasBadge10 = 0;
+        double hasBadge11 = 0;
+        double hasBadge12 = 0;
+        double hasBadge13 = 0;
+        double hasBadge14 = 0;
+        double hasBadge15 = 0;
+        double hasBadge16 = 0;
+        double hasBadge17 = 0;
+        double hasBadge18 = 0;
+        double hasBadge19 = 0;
+        double hasBadge20 = 0;
+        for(int i = 0;i < currentUser;i++){
+            if(userBadgeList.get(i).isBadge1()){
+                hasBadge1 ++;
+            }
+            if(userBadgeList.get(i).isBadge2()){
+                hasBadge2 ++;
+            }
+            if(userBadgeList.get(i).isBadge3()){
+                hasBadge3 ++;
+            }
+            if(userBadgeList.get(i).isBadge4()){
+                hasBadge4 ++;
+            }
+            if(userBadgeList.get(i).isBadge5()){
+                hasBadge5 ++;
+            }
+            if(userBadgeList.get(i).isBadge6()){
+                hasBadge6 ++;
+            }
+            if(userBadgeList.get(i).isBadge7()){
+                hasBadge7 ++;
+            }
+            if(userBadgeList.get(i).isBadge8()){
+                hasBadge8 ++;
+            }
+            if(userBadgeList.get(i).isBadge9()){
+                hasBadge9 ++;
+            }
+            if(userBadgeList.get(i).isBadge10()){
+                hasBadge10 ++;
+            }
+            /*
+            if(userBadgeList.get(i).isBadge11()){
+                hasBadge1 ++;
+            }
+            if(userBadgeList.get(i).isBadge2()){
+                hasBadge2 ++;
+            }
+            if(userBadgeList.get(i).isBadge3()){
+                hasBadge3 ++;
+            }
+            if(userBadgeList.get(i).isBadge4()){
+                hasBadge4 ++;
+            }
+            if(userBadgeList.get(i).isBadge5()){
+                hasBadge5 ++;
+            }
+            if(userBadgeList.get(i).isBadge6()){
+                hasBadge6 ++;
+            }
+            if(userBadgeList.get(i).isBadge7()){
+                hasBadge7 ++;
+            }
+            if(userBadgeList.get(i).isBadge8()){
+                hasBadge8 ++;
+            }
+            if(userBadgeList.get(i).isBadge9()){
+                hasBadge9 ++;
+            }
+            if(userBadgeList.get(i).isBadge10()){
+                hasBadge10 ++;
+            }
+            */
+        }
+        persentList.add((hasBadge1/currentUser)*100);
+        persentList.add((hasBadge2/currentUser)*100);
+        persentList.add((hasBadge3/currentUser)*100);
+        persentList.add((hasBadge4/currentUser)*100);
+        persentList.add((hasBadge5/currentUser)*100);
+        persentList.add((hasBadge6/currentUser)*100);
+        persentList.add((hasBadge7/currentUser)*100);
+        persentList.add((hasBadge8/currentUser)*100);
+        persentList.add((hasBadge9/currentUser)*100);
+        persentList.add((hasBadge10/currentUser)*100);
+
+
+
+    model.addAttribute("list", persentList);    
+    return "badges";
     }
 }

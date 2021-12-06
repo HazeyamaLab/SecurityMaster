@@ -80,7 +80,9 @@ public class AuthController {
                 badgeName = "secret.txt";
             }
             badgeTimelineDetail.setBadgeName(badgeName);
-            badgeTimelineDetail.setUserName(user.getName());
+            String userId = badgeTimeline.getUserId();
+            String userName = userRepository.getById(userId).getUsername();
+            badgeTimelineDetail.setUserName(userName);
             badgeTimelineDetail.setLtd(badgeTimeline.getLtd());
 
             detail_list.add(badgeTimelineDetail);
