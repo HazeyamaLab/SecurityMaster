@@ -3,10 +3,17 @@ package lab.haze.SecurityMaster.Controller;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Random;
+
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,8 +22,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import lab.haze.SecurityMaster.Model.BadgeTimeline;
 import lab.haze.SecurityMaster.Model.User;
 import lab.haze.SecurityMaster.Model.UserBadge;
+import lab.haze.SecurityMaster.Repository.BadgeTimelineRepository;
 import lab.haze.SecurityMaster.Repository.UserRepository;
 import lab.haze.SecurityMaster.Service.BadgeTimelineServiceImpl;
 import lab.haze.SecurityMaster.Service.UserBadgeServiceImpl;
@@ -34,6 +43,9 @@ public class LearnController {
     BadgeTimelineServiceImpl BadgeTimelineServiceImpl;
 
     @Autowired
+    BadgeTimelineRepository badgeTimelineRepository;
+
+    @Autowired
     HttpSession httpSession;
 
 
@@ -42,6 +54,15 @@ public class LearnController {
     public String prologue(Model model, @AuthenticationPrincipal User user){
         model.addAttribute("userName", user.getName());
         model.addAttribute("companyName", user.getCompanyName());
+        UserBadge userBadge = userBadgeServiceImpl.getUserBadge(user.getId());
+        BadgeTimeline badgeTimeline = new BadgeTimeline();
+        userBadge.setBadge1(true);
+        badgeTimeline.setBadgeId(1);
+        badgeTimeline.setUserId(user.getId());
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        badgeTimeline.setLtd(now.format(formatter));
+        badgeTimelineRepository.save(badgeTimeline);
         return "learn/prologue";
     }
     @GetMapping("/learn")
@@ -49,10 +70,11 @@ public class LearnController {
         return "/learn";
     }
 
-    //---------------------Injection---------------------------------------------------------------
+    //----------------------------------Injection---------------------------------------------------------------
 
     @GetMapping("/learn/1injection/intro")
-    public String learn1(){
+    public String learn1(@AuthenticationPrincipal User user){
+        httpSession.setAttribute("preWorth", user.getCompanyWorth());
         return "/learn/1injection/intro";
     }
 
@@ -80,7 +102,9 @@ public class LearnController {
         } else {
             httpSession.setAttribute("colCount", "1");
             double worth = user.getCompanyWorth();
-            worth = worth * 1.2;
+            Random Random = new Random();
+            double ratio = Random.nextDouble();
+            worth = worth * (1.0 +(0.5 * ratio));
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
@@ -111,7 +135,9 @@ public class LearnController {
             return "/learn/1injection/inc2";
         } else {
             double worth = user.getCompanyWorth();
-            worth = worth * 1.2;
+            Random Random = new Random();
+            double ratio = Random.nextDouble();
+            worth = worth * (1.0 +(0.5 * ratio));
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
@@ -148,12 +174,28 @@ public class LearnController {
         String cs = c.toString();
         int count = Integer.parseInt(cs);
         UserBadge userBadge = userBadgeServiceImpl.getUserBadge(user.getId());
-        userBadge.setBadge1(true);
-        if(count == 2){
+        BadgeTimeline badgeTimeline = new BadgeTimeline();
+        if(!userBadge.isBadge2()){
             userBadge.setBadge2(true);
+            badgeTimeline.setBadgeId(2);
+            badgeTimeline.setUserId(user.getId());
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            badgeTimeline.setLtd(now.format(formatter));
+            badgeTimelineRepository.save(badgeTimeline);
+        }
+        if(count == 2 && !userBadge.isBadge3()){
+            userBadge.setBadge3(true);
+            badgeTimeline.setBadgeId(3);
+            badgeTimeline.setUserId(user.getId());
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            badgeTimeline.setLtd(now.format(formatter));
+            badgeTimelineRepository.save(badgeTimeline);
         }
         userBadgeServiceImpl.updateBadge(userBadge);
-        httpSession.invalidate();
+        model.addAttribute("preWorth", httpSession.getAttribute("preWorth"));
+        model.addAttribute("worth", user.getCompanyWorth());
         return "/learn/1injection/fin";
     }
 

@@ -4,11 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
-    企業価値上位3名のランキングです．<br>
+    <div id="navArea">
+
+        <nav>
+          <div class="inner">
+            <ul>
+                <li><a href="/menu">メインメニュー</a></li>
+              <li><a href="/learn">学習メニュー</a></li>
+              <li><a href="/ranking">全体ランキング</a></li>
+              <li><a href="/badges">獲得した実績の閲覧</a></li>
+            </ul>
+          </div>
+        </nav>
+      
+        <div class="toggle_btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      
+        <div id="mask"></div>
+      
+      </div>
+    <main>
+    <h1>ユーザランキング</h1>
+    企業価値上位3名のランキングです<br><br>
     <table class="table-striped">  
         <tr>
             <th scope="col">
@@ -16,6 +42,9 @@
             </th>
             <th scope="col">
                 企業名
+            </th>
+            <th scope="col">
+                ユーザ名
             </th>
             <th scope="col">
                 企業価値
@@ -26,10 +55,13 @@
                 1st.
             </td>
             <td>
+                <span th:text="${list.get(0).getCompanyName()}"></span>
+            </td>
+            <td>
                 <span th:text="${list.get(0).getName()}"></span>
             </td>
             <td>
-                <span th:text="${list.get(0).getCompanyWorth()}"></span>
+                <span th:text="${list.get(0).getCompanyWorth()}"></span> $
             </td>
         </tr>
         <tr>
@@ -37,10 +69,13 @@
                 2nd.
             </td>
             <td>
+                <span th:text="${list.get(1).getCompanyName()}"></span>
+            </td>
+            <td>
                 <span th:text="${list.get(1).getName()}"></span>
             </td>
             <td>
-                <span th:text="${list.get(1).getCompanyWorth()}"></span>
+                <span th:text="${list.get(1).getCompanyWorth()}"></span> $
             </td>
         </tr>
         <tr>
@@ -48,16 +83,70 @@
                 3rd.
             </td>
             <td>
+                <span th:text="${list.get(2).getCompanyName()}"></span>
+            </td>
+            <td>
                 <span th:text="${list.get(2).getName()}"></span>
             </td>
             <td>
-                <span th:text="${list.get(2).getCompanyWorth()}"></span>
+                <span th:text="${list.get(2).getCompanyWorth()}"></span> $
             </td>
         </tr>
     </table>
 
-<a href="menu">click here to menu</a>
+    <br>
 
+    <table class="table-striped">  
+        <tr>
+            <th scope="col">
+                あなたの順位
+            </th>
+            <th scope="col">
+                あなたの企業名
+            </th>
+            <th scope="col">
+                ユーザ名
+            </th>
+            <th scope="col">
+                あなたの企業価値
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <span th:text="${userRank}"></span>
+            </td>
+            <td>
+                <span th:text="${user.getCompanyName()}"></span>
+            </td>
+            <td>
+                <span th:text="${user.getName()}"></span>
+            </td>
+            <td>
+                <span th:text="${user.getCompanyWorth()}"></span> $
+            </td>
+        </tr>
+    </table>
+</main>
+<script>
+    (function($) {
+      var $nav   = $('#navArea');
+      var $btn   = $('.toggle_btn');
+      var $mask  = $('#mask');
+      var open   = 'open'; // class
+      // menu open close
+      $btn.on( 'click', function() {
+        if ( ! $nav.hasClass( open ) ) {
+          $nav.addClass( open );
+        } else {
+          $nav.removeClass( open );
+        }
+      });
+      // mask close
+      $mask.on('click', function() {
+        $nav.removeClass( open );
+      });
+    } )(jQuery);        
+        </script>
 
 </body>
 </html>

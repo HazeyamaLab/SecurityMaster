@@ -4,12 +4,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css">
     <title>Document</title>
 </head>
 <body>
-    Choose topic<br>
-    <a href="/learn/prologue/">Click here to read prologue</a><br>
-    <a href="/learn/1injection/intro">Click here to learn "Injection"</a><br>
-    <a href="/menu">メニューに戻る</a>
+    <div id="navArea">
+
+        <nav>
+          <div class="inner">
+            <ul>
+              <li><a href="/menu">メインメニュー</a></li>
+              <li><a href="/learn">学習メニュー</a></li>
+              <li><a href="/ranking">ユーザランキング</a></li>
+              <li><a href="/badges">獲得した実績の閲覧</a></li>
+            </ul>
+          </div>
+        </nav>
+      
+        <div class="toggle_btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      
+        <div id="mask"></div>
+      
+      </div>
+    <main>
+        <h1>学習メニュー</h1>
+    <a href="/learn/prologue/">第0章 Prologue</a><br>
+    <a href="/learn/1injection/intro">第1章 インジェクション</a><br>
+    <a href="/learn/2directory/intro">第2章 ディレクトリ・トラバーサル</a><br>
+    <a href="/learn/1injection/intro">第3章 イセッション管理</a><br>
+    <a href="/learn/1injection/intro">第4章 クロスサイトスクリプティング</a><br>
+    <a href="/learn/1injection/intro">第5章 HTTPヘッダインジェクション</a><br>
+    <a href="/learn/1injection/intro">第6章 クリックジャッキング</a><br>
+    </main>
 </body>
+<script>
+    (function($) {
+      var $nav   = $('#navArea');
+      var $btn   = $('.toggle_btn');
+      var $mask  = $('#mask');
+      var open   = 'open'; // class
+      // menu open close
+      $btn.on( 'click', function() {
+        if ( ! $nav.hasClass( open ) ) {
+          $nav.addClass( open );
+        } else {
+          $nav.removeClass( open );
+        }
+      });
+      // mask close
+      $mask.on('click', function() {
+        $nav.removeClass( open );
+      });
+    } )(jQuery);        
+        </script>
 </html>

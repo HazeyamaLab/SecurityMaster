@@ -1,5 +1,6 @@
 package lab.haze.SecurityMaster.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
@@ -17,10 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
+import javassist.expr.NewArray;
+import lab.haze.SecurityMaster.Model.BadgeTimeline;
+import lab.haze.SecurityMaster.Model.BadgeTimelineDetail;
 import lab.haze.SecurityMaster.Model.User;
 import lab.haze.SecurityMaster.Model.UserBadge;
 import lab.haze.SecurityMaster.Repository.UserBadgeRepository;
 import lab.haze.SecurityMaster.Repository.UserRepository;
+import lab.haze.SecurityMaster.Service.BadgeTimelineServiceImpl;
 import lab.haze.SecurityMaster.Service.UserServiceImpl;
 
 @Controller
@@ -34,6 +39,9 @@ public class AuthController {
     @Autowired
     UserBadgeRepository userBadgeRepository;
 
+    @Autowired
+    BadgeTimelineServiceImpl badgeTimelineServiceImpl;
+
     @RequestMapping("/")
     public String index() {
         return "index";
@@ -46,11 +54,36 @@ public class AuthController {
 
     
     @GetMapping("/menu")
-    public String menu(Model model,@AuthenticationPrincipal User user ) {
-        System.out.println(user);
+    public String menu(Model model,@AuthenticationPrincipal User user) {
+        //System.out.println(user);
         model.addAttribute("user", user);
+        List<BadgeTimeline> list = badgeTimelineServiceImpl.getAll();
+        List<BadgeTimelineDetail> detail_list = new ArrayList<BadgeTimelineDetail>();
+        for(int c = 0; c < list.size();c++){
+            BadgeTimeline badgeTimeline =list.get(c);
+            BadgeTimelineDetail badgeTimelineDetail = new BadgeTimelineDetail();
+            int badgeId = badgeTimeline.getBadgeId();
+            String badgeName = "Hello Security!";
+            if(badgeId == 1){
+                badgeName = "Hello Security!";
+            }else if(badgeId == 2){
+                badgeName = "インジェクションの学習者";
+            }else if(badgeId == 3){
+                badgeName = "PlaceHolder";
+            }else if(badgeId == 4){
+                badgeName = "ディレクトリの学習者";
+            }else if(badgeId == 5){
+                badgeName = "secret.txt";
+            }
+            badgeTimelineDetail.setBadgeName(badgeName);
+            badgeTimelineDetail.setUserName(user.getName());
+            badgeTimelineDetail.setLtd(badgeTimeline.getLtd());
+
+            detail_list.add(badgeTimelineDetail);
+        }
+        System.out.println(detail_list);
+        model.addAttribute("list", detail_list);
         return "menu";
-        
     }
 
     @GetMapping("/regist")

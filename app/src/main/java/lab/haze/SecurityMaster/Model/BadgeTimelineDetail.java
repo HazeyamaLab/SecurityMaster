@@ -11,11 +11,11 @@ import lombok.Data;
 @Entity
 @Table(name = "badge_timelines")
 @Data
-public class BadgeTimeline {
+public class BadgeTimelineDetail {
     @Id
     private int id;
-    private String userId;
-    private int badgeId;
+    private String userName;
     private String ltd;
+    private String badgeName;
 
 }

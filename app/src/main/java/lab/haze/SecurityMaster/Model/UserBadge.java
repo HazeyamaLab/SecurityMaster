@@ -22,5 +22,17 @@ public class UserBadge {
     private boolean badge8;
     private boolean badge9;
     private boolean badge10;
+    /*
+    private boolean badge11;
+    private boolean badge12;
+    private boolean badge13;
+    private boolean badge14;
+    private boolean badge15;
+    private boolean badge16;
+    private boolean badge17;
+    private boolean badge18;
+    private boolean badge19;
+    private boolean badge20;
+    */
 
 }

@@ -30,7 +30,5 @@ public class BadgeController {
         UserBadge userBadge = userBadgeServiceImpl.getUserBadge(id);
         model.addAttribute("userBadge", userBadge);
         return "badges";
-
-        
     }
 }

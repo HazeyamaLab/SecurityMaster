@@ -5,9 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css">
     <title>Document</title>
 </head>
 <body>
+    <div id="navArea">
+
+        <nav>
+          <div class="inner">
+            <ul>
+              <li><a href="/menu">メインメニュー</a></li>
+              <li><a href="/learn">学習メニュー</a></li>
+              <li><a href="/ranking">ユーザランキング</a></li>
+              <li><a href="/badges">獲得した実績の閲覧</a></li>
+            </ul>
+          </div>
+        </nav>
+      
+        <div class="toggle_btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      
+        <div id="mask"></div>
+      
+      </div>
+    <main>
+        <h1>獲得した実績</h1>
     <span th:text="${userName}"></span>さん，今までに獲得したバッジは以下のとおりです．<br>
 
     <table class="table-striped">  
@@ -25,10 +51,19 @@
 
         <tr>
             <td>
+                <th:block th:if="${userBadge.isBadge1() == true}">
                 Hello Security!
+                </th:block>
+                <th:block th:if="${userBadge.isBadge1() == false}">
+                未達成の実績
+                </th:block>
             </td>
             <td>
-                <img src="imgs/broz.png" alt="">
+                <th:block th:if="${userBadge.isBadge1() == true}">
+                    <img th:src="@{/imgs/broz.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge1() == false}">
+                </th:block>
             </td>
             <td>
                 Prologueを読む
@@ -36,11 +71,19 @@
         </tr>
         <tr>
             <td>
+                <th:block th:if="${userBadge.isBadge2() == true}">
                 インジェクションの学習者
+                </th:block>
+                <th:block th:if="${userBadge.isBadge2() == false}">
+                未達成の実績
+                </th:block>
             </td>
             <td>
-                <img th:src="@{/imgs/broz.png}" alt="">
-                
+                <th:block th:if="${userBadge.isBadge2() == true}">
+                    <img th:src="@{/imgs/broz.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge2() == false}">
+                </th:block>
             </td>
             <td>
                 SQLインジェクションの学習修了
@@ -49,29 +92,166 @@
         </tr>
         <tr>
             <td>
-                未達成の実績
+                <th:block th:if="${userBadge.isBadge3() == true}">
+                    PlaceHolder
+                </th:block>
+                <th:block th:if="${userBadge.isBadge3() == false}">
+                    未達成の実績
+                </th:block>
             </td>
             <td>
-                
+                <th:block th:if="${userBadge.isBadge3() == true}">
+                    <img th:src="@{/imgs/silv.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge3() == false}">
+                </th:block>
             </td>
             <td>
                 SQLインジェクションの学習を満点で修了
             </td>
         </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge4() == true}">
+                    ディレクトリの学習者
+                </th:block>
+                <th:block th:if="${userBadge.isBadge4() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge4() == true}">
+                    <img th:src="@{/imgs/broz.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge4() == false}">
+                </th:block>
+            </td>
+            <td>
+                ディレクトリ・トラバーサルの学習修了
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge5() == true}">
+                    secret.txt
+                </th:block>
+                <th:block th:if="${userBadge.isBadge5() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge5() == true}">
+                    <img th:src="@{/imgs/silv.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge5() == false}">
+                </th:block>
+            </td>
+            <td>
+                ディレクトリ・トラバーサルの学習を満点で修了
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge5() == true}">
+                    セッションの学習者
+                </th:block>
+                <th:block th:if="${userBadge.isBadge5() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge5() == true}">
+                    <img th:src="@{/imgs/broz.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge5() == false}">
+                </th:block>
+            </td>
+            <td>
+                セッション管理の学習修了
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge6() == true}">
+                    session.invalidate()
+                </th:block>
+                <th:block th:if="${userBadge.isBadge6() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge6() == true}">
+                    <img th:src="@{/imgs/silv.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge6() == false}">
+                </th:block>
+            </td>
+            <td>
+                セッション管理の学習を満点で修了
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge6() == true}">
+                    XSSの学習者
+                </th:block>
+                <th:block th:if="${userBadge.isBadge6() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge6() == true}">
+                    <img th:src="@{/imgs/broz.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge6() == false}">
+                </th:block>
+            </td>
+            <td>
+                XSSの学習修了
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge7() == true}">
+                    &#38;quot;
+                </th:block>
+                <th:block th:if="${userBadge.isBadge7() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge7() == true}">
+                    <img th:src="@{/imgs/silv.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge7() == false}">
+                </th:block>
+            </td>
+            <td>
+                XSSを満点で修了
+            </td>
+        </tr>
+
     </table>
-
-    <!--
-    <th:block th:if="${userBadge.isBadge1() == true}">
-        <p>Your badge1</p>
-    </th:block>
-    <th:block th:if="${userBadge.isBadge2() == true}">
-        <p>Your badge2</p>
-    </th:block>
-    -->
-
-
-<a href="menu">click here to menu</a>
-
-
+</main>
+<script>
+    (function($) {
+      var $nav   = $('#navArea');
+      var $btn   = $('.toggle_btn');
+      var $mask  = $('#mask');
+      var open   = 'open'; // class
+      // menu open close
+      $btn.on( 'click', function() {
+        if ( ! $nav.hasClass( open ) ) {
+          $nav.addClass( open );
+        } else {
+          $nav.removeClass( open );
+        }
+      });
+      // mask close
+      $mask.on('click', function() {
+        $nav.removeClass( open );
+      });
+    } )(jQuery);        
+        </script>
 </body>
 </html>
