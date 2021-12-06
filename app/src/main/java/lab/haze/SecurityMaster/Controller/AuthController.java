@@ -81,7 +81,7 @@ public class AuthController {
             }
             badgeTimelineDetail.setBadgeName(badgeName);
             String userId = badgeTimeline.getUserId();
-            String userName = userRepository.getById(userId).getUsername();
+            String userName = userRepository.getById(userId).getName();
             badgeTimelineDetail.setUserName(userName);
             badgeTimelineDetail.setLtd(badgeTimeline.getLtd());
 

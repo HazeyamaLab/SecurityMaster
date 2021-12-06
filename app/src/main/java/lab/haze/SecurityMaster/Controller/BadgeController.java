@@ -124,18 +124,16 @@ public class BadgeController {
             }
             */
         }
-        persentList.add((hasBadge1/currentUser)*100);
-        persentList.add((hasBadge2/currentUser)*100);
-        persentList.add((hasBadge3/currentUser)*100);
-        persentList.add((hasBadge4/currentUser)*100);
-        persentList.add((hasBadge5/currentUser)*100);
-        persentList.add((hasBadge6/currentUser)*100);
-        persentList.add((hasBadge7/currentUser)*100);
-        persentList.add((hasBadge8/currentUser)*100);
-        persentList.add((hasBadge9/currentUser)*100);
-        persentList.add((hasBadge10/currentUser)*100);
-
-
+        persentList.add((double)Math.round(((hasBadge1/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge2/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge3/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge4/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge5/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge6/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge7/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge8/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge9/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge10/currentUser)*100) * 100)/100);
 
     model.addAttribute("list", persentList);    
     return "badges";

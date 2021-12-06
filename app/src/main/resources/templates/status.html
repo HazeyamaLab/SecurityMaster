@@ -36,6 +36,8 @@
       </div>
       <main>
         <h1>学習の履歴</h1>
+        学習した章: <span th:text="${count}"></span>章 / 7章<br>
+        現在の<span th:text="${user.getCompanyName()}"></span>の企業価値:<span th:text="${user.getCompanyWorth()}"></span>$<br>
             <span th:each="component : ${list}">
                 <div class="tlbox">
                     <span th:text="${component.ltd}"></span> 第<span th:text="${component.learnId}"></span>章<br>
