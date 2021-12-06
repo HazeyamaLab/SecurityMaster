@@ -5,6 +5,8 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpSession;
@@ -25,8 +27,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import lab.haze.SecurityMaster.Model.BadgeTimeline;
 import lab.haze.SecurityMaster.Model.User;
 import lab.haze.SecurityMaster.Model.UserBadge;
+import lab.haze.SecurityMaster.Model.UserStatus;
 import lab.haze.SecurityMaster.Repository.BadgeTimelineRepository;
 import lab.haze.SecurityMaster.Repository.UserRepository;
+import lab.haze.SecurityMaster.Repository.UserStatusRepository;
 import lab.haze.SecurityMaster.Service.BadgeTimelineServiceImpl;
 import lab.haze.SecurityMaster.Service.UserBadgeServiceImpl;
 import lab.haze.SecurityMaster.Service.UserServiceImpl;
@@ -46,7 +50,21 @@ public class LearnController {
     BadgeTimelineRepository badgeTimelineRepository;
 
     @Autowired
+    UserStatusRepository userStatusRepository;
+
+    @Autowired
     HttpSession httpSession;
+
+    @GetMapping("/status")
+        public String status(Model model,@AuthenticationPrincipal User user){
+            List<UserStatus> list = new ArrayList<>();
+            boolean isStatusExists = userStatusRepository.existsByUserId(user.getId());
+            if(isStatusExists){
+                list = userStatusRepository.findByUserId(user.getId());
+                model.addAttribute("list", list);
+            }
+            return "/status";
+    }
 
 
 
@@ -63,7 +81,7 @@ public class LearnController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         badgeTimeline.setLtd(now.format(formatter));
         badgeTimelineRepository.save(badgeTimeline);
-        return "learn/prologue";
+        return "/learn/prologue";
     }
     @GetMapping("/learn")
     public String learn(){
@@ -193,6 +211,16 @@ public class LearnController {
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
         }
+        
+        UserStatus userStatus = new UserStatus();
+        userStatus.setUserId(user.getId());
+        userStatus.setLearnId(1);
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        userStatus.setLtd(now.format(formatter));
+        userStatus.setCorrect(count);
+        userStatusRepository.save(userStatus);
+
         userBadgeServiceImpl.updateBadge(userBadge);
         model.addAttribute("preWorth", httpSession.getAttribute("preWorth"));
         model.addAttribute("worth", user.getCompanyWorth());

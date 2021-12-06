@@ -35,17 +35,16 @@
       
       </div>
       <main>
-        <h1>Security Masterにようこそ</h1>
-        <div class="box17">
-        <span th:text="${user.getCompanyName()}"></span>所属 <span th:text="${user.getName()}"></span>さん<br>
-        現在の<span th:text="${user.getCompanyName()}"></span>の企業価値:<span th:text="${user.getCompanyWorth()}"></span>$<br>
-        </div>
-        <br>
-        <h3>実績解除の履歴</h3>
+        <h1>学習の履歴</h1>
             <span th:each="component : ${list}">
                 <div class="tlbox">
-                    <span th:text="${component.userName}"></span>さんが<span th:text="${component.badgeName}"></span>の実績を解除<br>
-                    解除日時:<span th:text="${component.ltd}"></span><br>
+                    <span th:text="${component.ltd}"></span> 第<span th:text="${component.learnId}"></span>章<br>
+                    正解数:<span th:text="${component.correct}"></span> / <th:block th:if="${component.learnId == 1}">
+                      2
+                      </th:block>
+                      <th:block th:if="${component.learnId != 1}">
+                      4
+                      </th:block>
                 </div>
             </span>
       </main>

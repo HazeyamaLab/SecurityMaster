@@ -117,7 +117,7 @@ public class AuthController {
             System.out.println(encoder.encode(pass));
             user.setPassword(encoder.encode(pass));
             user.setCompanyName(cName);
-            user.setCompanyWorth(10000);
+            user.setCompanyWorth(1000000);
             user.setName(name);
             user.setRole("USER");
             userBadge.setId(id);
