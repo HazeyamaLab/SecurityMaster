@@ -78,6 +78,10 @@ public class AuthController {
                 badgeName = "ディレクトリの学習者";
             }else if(badgeId == 5){
                 badgeName = "secret.txt";
+            }else if(badgeId == 6){
+                badgeName = "セッションの学習者";
+            }else if(badgeId == 7){
+                badgeName = "session.invalidate()";
             }
             badgeTimelineDetail.setBadgeName(badgeName);
             String userId = badgeTimeline.getUserId();

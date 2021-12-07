@@ -115,13 +115,15 @@ public class LearnController {
         model.addAttribute("companyName", user.getCompanyName());
         UserBadge userBadge = userBadgeServiceImpl.getUserBadge(user.getId());
         BadgeTimeline badgeTimeline = new BadgeTimeline();
-        userBadge.setBadge1(true);
-        badgeTimeline.setBadgeId(1);
-        badgeTimeline.setUserId(user.getId());
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        badgeTimeline.setLtd(now.format(formatter));
-        badgeTimelineRepository.save(badgeTimeline);
+        if(!userBadge.isBadge1()){
+            userBadge.setBadge1(true);
+            badgeTimeline.setBadgeId(1);
+            badgeTimeline.setUserId(user.getId());
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            badgeTimeline.setLtd(now.format(formatter));
+            badgeTimelineRepository.save(badgeTimeline);
+        }
         return "/learn/prologue";
     }
     @GetMapping("/learn")
@@ -452,6 +454,187 @@ public class LearnController {
         model.addAttribute("preWorth", httpSession.getAttribute("preWorth"));
         model.addAttribute("worth", user.getCompanyWorth());
         return "/learn/2directory/fin";
+    }
+    //-----------------------------------------------------------------------------------
+    @GetMapping("/learn/3session/hello")
+    public String learn3hello(@AuthenticationPrincipal User user){
+        httpSession.setAttribute("preWorth", user.getCompanyWorth());
+        return "/learn/3session/hello";
+    }
+    @GetMapping("/learn/3session/pretest1")
+    public String dirpretest3(){
+        return "/learn/3session/pretest1";
+    }
+    @GetMapping("/learn/3session/pretest2")
+    public String dirpretest32(){
+        return "/learn/3session/pretest2";
+    }
+    @PostMapping("/learn/3session/pretest1")
+    public String dirPreTest33(@RequestParam("ans") String ans,@AuthenticationPrincipal User user) {
+        int ians = Integer.parseInt(ans);
+        if (ians != 2) {
+            httpSession.setAttribute("colCount", "0");
+            double worth = user.getCompanyWorth();
+            worth = worth * 0.9;
+            user.setCompanyWorth((int) worth);
+            userServiceImpl.updateWorth(user);
+            return "/learn/3session/preinc1";
+        } else {
+            httpSession.setAttribute("colCount", "1");
+            double worth = user.getCompanyWorth();
+            Random Random = new Random();
+            double ratio = Random.nextDouble();
+            worth = worth * (1.0 +(0.2 * ratio));
+            System.out.println(worth);
+            user.setCompanyWorth((int) worth);
+            userServiceImpl.updateWorth(user);
+            return "/learn/3session/precol1";
+        }
+    }
+    @PostMapping("/learn/3session/pretest2")
+    public String dirPreTest22(@RequestParam("ans") String ans,@AuthenticationPrincipal User user) {
+        int ians = Integer.parseInt(ans);
+        if (ians != 3) {
+            double worth = user.getCompanyWorth();
+            worth = worth * 0.9;
+            user.setCompanyWorth((int) worth);
+            userServiceImpl.updateWorth(user);
+            return "/learn/3session/preinc2";
+        } else {
+            Object c =  httpSession.getAttribute("colCount");
+            String cs = c.toString();
+            int count = Integer.parseInt(cs);
+            count += 1;
+            Integer countInteger = Integer.valueOf(count);
+            String countString = countInteger.toString();
+            httpSession.setAttribute("colCount", countString);
+            double worth = user.getCompanyWorth();
+            Random Random = new Random();
+            double ratio = Random.nextDouble();
+            worth = worth * (1.0 +(0.2 * ratio));
+            System.out.println(worth);
+            user.setCompanyWorth((int) worth);
+            userServiceImpl.updateWorth(user);
+            return "/learn/3session/precol2";
+        }
+    }
+    @GetMapping("/learn/3session/intro")
+    public String learn3intro(@AuthenticationPrincipal User user){
+        return "/learn/3session/intro";
+    }
+    @GetMapping("/learn/3session/lecture")
+    public String lecture3(){
+        return "/learn/3session/lecture";
+    }
+    @GetMapping("/learn/3session/test1")
+    public String dirtest5(){
+        return "/learn/3session/test1";
+    }
+    @GetMapping("/learn/3session/test2")
+    public String dirtest3(){
+        return "/learn/3session/test2";
+    }
+
+    @PostMapping("/learn/3session/test1")
+    public String dirTest11(@RequestParam("ans") String ans,@AuthenticationPrincipal User user) {
+        int ians = Integer.parseInt(ans);
+        if (ians != 4) {
+            double worth = user.getCompanyWorth();
+            worth = worth * 0.9;
+            user.setCompanyWorth((int) worth);
+            userServiceImpl.updateWorth(user);
+            return "/learn/3session/inc1";
+        } else {
+            Object c =  httpSession.getAttribute("colCount");
+            String cs = c.toString();
+            int count = Integer.parseInt(cs);
+            count += 1;
+            Integer countInteger = Integer.valueOf(count);
+            String countString = countInteger.toString();
+            httpSession.setAttribute("colCount", countString);
+            double worth = user.getCompanyWorth();
+            Random Random = new Random();
+            double ratio = Random.nextDouble();
+            worth = worth * (1.0 +(0.2 * ratio));
+            System.out.println(worth);
+            user.setCompanyWorth((int) worth);
+            userServiceImpl.updateWorth(user);
+            return "/learn/3session/col1";
+        }
+    }
+    @PostMapping("/learn/3session/test2")
+    public String dirTest22(@RequestParam("ans") String ans,@AuthenticationPrincipal User user) {
+        int ians = Integer.parseInt(ans);
+        if (ians != 3) {
+            double worth = user.getCompanyWorth();
+            worth = worth * 0.9;
+            user.setCompanyWorth((int) worth);
+            userServiceImpl.updateWorth(user);
+            return "/learn/3session/inc2";
+        } else {
+            Object c =  httpSession.getAttribute("colCount");
+            String cs = c.toString();
+            int count = Integer.parseInt(cs);
+            count += 1;
+            Integer countInteger = Integer.valueOf(count);
+            String countString = countInteger.toString();
+            httpSession.setAttribute("colCount", countString);
+            double worth = user.getCompanyWorth();
+            Random Random = new Random();
+            double ratio = Random.nextDouble();
+            worth = worth * (1.0 +(0.2 * ratio));
+            System.out.println(worth);
+            user.setCompanyWorth((int) worth);
+            userServiceImpl.updateWorth(user);
+            return "/learn/3session/col2";
+        }
+    }
+    @GetMapping("/learn/3session/fin")
+    public String dirfin3(Model model,@AuthenticationPrincipal User user){
+        Object c =  httpSession.getAttribute("colCount");
+        String cs = c.toString();
+        int count = Integer.parseInt(cs);
+        UserBadge userBadge = userBadgeServiceImpl.getUserBadge(user.getId());
+        
+        System.out.println(count);
+        if(!userBadge.isBadge6()){
+            BadgeTimeline badgeTimeline = new BadgeTimeline();
+            userBadge.setBadge6(true);
+            badgeTimeline.setBadgeId(6);
+            badgeTimeline.setUserId(user.getId());
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            badgeTimeline.setLtd(now.format(formatter));
+            badgeTimelineRepository.save(badgeTimeline);
+            badgeTimelineRepository.flush();
+            
+        }
+        
+        if(count == 4 && !userBadge.isBadge7()){
+            BadgeTimeline badgeTimeline = new BadgeTimeline();
+            userBadge.setBadge7(true);
+            badgeTimeline.setBadgeId(7);
+            badgeTimeline.setUserId(user.getId());
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            badgeTimeline.setLtd(now.format(formatter));
+            badgeTimelineRepository.save(badgeTimeline);
+            badgeTimelineRepository.flush();
+        }
+        
+        UserStatus userStatus = new UserStatus();
+        userStatus.setUserId(user.getId());
+        userStatus.setLearnId(3);
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        userStatus.setLtd(now.format(formatter));
+        userStatus.setCorrect(count);
+        userStatusRepository.save(userStatus);
+
+        userBadgeServiceImpl.updateBadge(userBadge);
+        model.addAttribute("preWorth", httpSession.getAttribute("preWorth"));
+        model.addAttribute("worth", user.getCompanyWorth());
+        return "/learn/3session/fin";
     }
 
 
