@@ -9,11 +9,12 @@
 <body>
     問題1 : 以下の選択肢の中から，セッション管理の不備をついた攻撃の<strong>根本的解決にならない</strong>ものを1つ選択してください．<br>
     1.セッション ID を推測が困難なものにする．<br>
-    2.HTTPS 通信で利用する Cookie には secure 属性を加える．<br>
-    3.ログイン成功後に、既存のセッション ID とは別に秘密情報を発行し、ページの遷移ごとにその値を確認する．<br>
-    4.セッション ID を URL パラメータに格納する．<br>
+    2.セッション ID を URL パラメータに格納する．<br>
+    3.HTTPS 通信で利用する Cookie には secure 属性を加える．<br>
+    4.ログイン成功後に、既存のセッション ID とは別に秘密情報を発行し、ページの遷移ごとにその値を確認する．<br>
+    
 
-    <form th:action="@{/learn/3session/test1}" method="post">
+    <form th:action="@{/learn/4xss/pretest1}" method="post">
         <button name="ans" type="submit" value="1">1 
         <button name="ans" type="submit" value="2">2 
         <button name="ans" type="submit" value="3">3 

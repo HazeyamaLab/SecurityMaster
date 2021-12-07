@@ -82,7 +82,12 @@ public class AuthController {
                 badgeName = "セッションの学習者";
             }else if(badgeId == 7){
                 badgeName = "session.invalidate()";
+            }else if(badgeId == 8){
+                badgeName = "XSSの学習者";
+            }else if(badgeId == 9){
+                badgeName = "document.cookie";
             }
+            
             badgeTimelineDetail.setBadgeName(badgeName);
             String userId = badgeTimeline.getUserId();
             String userName = userRepository.getById(userId).getName();

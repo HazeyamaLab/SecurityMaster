@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>不正解です</h2>
+    正解は4. ' OR 1 = 1 -- です．<br>
+    データベース内のユーザのテーブルにSQLを発行する際，以下のようなSQL文を発行するとします．<br>
+    <code>SELECT id,pass FROM login_user WHERE id='ユーザのID' AND pass='ユーザのパスワード';</code><br>
+    このSQL文は，データが存在するIdとPasswordを渡すと，id,passの対が返却されるものですね．
+    ではこのユーザのIDの部分に，' OR 1=1-- という文字列を渡すと，SQL文は以下のように組み立てられます．<br>
+    <code>SELECT id,pass FROM login_user WHERE id='' OR 1=1-- AND pass='';</code><br>
+    こうなった場合，<code>id = '' OR 1=1</code>の部分は，1=1が常に真であるためtrueを返します．また--以降はSQLにおいてはコメントアウトされるので，関係がなくなります．<br>
+    <a href="/learn/4xss/intro">次へ</a>
+    
+</body>
+</html>
