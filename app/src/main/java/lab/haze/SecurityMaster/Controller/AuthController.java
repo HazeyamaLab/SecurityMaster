@@ -86,6 +86,8 @@ public class AuthController {
                 badgeName = "XSSの学習者";
             }else if(badgeId == 9){
                 badgeName = "document.cookie";
+            }else if(badgeId == 10){
+                badgeName = "CSRFの学習者";
             }
             
             badgeTimelineDetail.setBadgeName(badgeName);

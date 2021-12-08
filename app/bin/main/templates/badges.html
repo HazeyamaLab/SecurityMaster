@@ -206,7 +206,7 @@
                 <th:block th:if="${userBadge.isBadge7() == true}">
                     <img th:src="@{/imgs/silv.png}" alt="">
                 </th:block>
-                <th:block th:if="${userBadge.isBadge8() == false}">
+                <th:block th:if="${userBadge.isBadge7() == false}">
                 </th:block>
             </td>
             <td>
@@ -260,6 +260,29 @@
             </td>
             <td>
                 XSSを満点で修了
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge10() == true}">
+                    CSRF の学習者
+                </th:block>
+                <th:block th:if="${userBadge.isBadge10() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge10() == true}">
+                    <img th:src="@{/imgs/broz.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge10() == false}">
+                </th:block>
+            </td>
+            <td>
+                <span th:text="${list[9]}"></span>%
+            </td>
+            <td>
+                CSRFを学習修了
             </td>
         </tr>
 

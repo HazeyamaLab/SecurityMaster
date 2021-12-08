@@ -8,10 +8,10 @@
 </head>
 <body>
     <form action="regist" method="post" th:action="@{/regist}">
-    id:<input type="text" name = "id"><br>
-    name:<input type="text" name = "name"><br>
-    company name:<input type="text" name = "cName"><br>
-    pass: <input type="password" name="pass"><br>
+    id:<input type="text" name = "id" required><br>
+    name:<input type="text" name = "name" required><br>
+    company name:<input type="text" name = "cName" required><br>
+    pass: <input type="password" name="pass" required minlength="8"><br>
     <input type="submit" value="登録">
     </form>
     
