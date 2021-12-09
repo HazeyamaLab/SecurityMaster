@@ -23,6 +23,7 @@ import lab.haze.SecurityMaster.Model.BadgeTimeline;
 import lab.haze.SecurityMaster.Model.BadgeTimelineDetail;
 import lab.haze.SecurityMaster.Model.User;
 import lab.haze.SecurityMaster.Model.UserBadge;
+import lab.haze.SecurityMaster.Repository.BadgeTimelineRepository;
 import lab.haze.SecurityMaster.Repository.UserBadgeRepository;
 import lab.haze.SecurityMaster.Repository.UserRepository;
 import lab.haze.SecurityMaster.Service.BadgeTimelineServiceImpl;
@@ -41,6 +42,9 @@ public class AuthController {
 
     @Autowired
     BadgeTimelineServiceImpl badgeTimelineServiceImpl;
+
+    @Autowired
+    BadgeTimelineRepository badgeTimelineRepository;
 
     @RequestMapping("/")
     public String index() {
@@ -61,44 +65,47 @@ public class AuthController {
     public String menu(Model model,@AuthenticationPrincipal User user) {
         //System.out.println(user);
         model.addAttribute("user", user);
-        List<BadgeTimeline> list = badgeTimelineServiceImpl.getAll();
-        List<BadgeTimelineDetail> detail_list = new ArrayList<BadgeTimelineDetail>();
-        for(int c = 0; c < list.size();c++){
-            BadgeTimeline badgeTimeline =list.get(c);
-            BadgeTimelineDetail badgeTimelineDetail = new BadgeTimelineDetail();
-            int badgeId = badgeTimeline.getBadgeId();
-            String badgeName = "Hello Security!";
-            if(badgeId == 1){
-                badgeName = "Hello Security!";
-            }else if(badgeId == 2){
-                badgeName = "インジェクションの学習者";
-            }else if(badgeId == 3){
-                badgeName = "PlaceHolder";
-            }else if(badgeId == 4){
-                badgeName = "ディレクトリの学習者";
-            }else if(badgeId == 5){
-                badgeName = "secret.txt";
-            }else if(badgeId == 6){
-                badgeName = "セッションの学習者";
-            }else if(badgeId == 7){
-                badgeName = "session.invalidate()";
-            }else if(badgeId == 8){
-                badgeName = "XSSの学習者";
-            }else if(badgeId == 9){
-                badgeName = "document.cookie";
-            }else if(badgeId == 10){
-                badgeName = "CSRFの学習者";
-            }
-            
-            badgeTimelineDetail.setBadgeName(badgeName);
-            String userId = badgeTimeline.getUserId();
-            String userName = userRepository.getById(userId).getName();
-            badgeTimelineDetail.setUserName(userName);
-            badgeTimelineDetail.setLtd(badgeTimeline.getLtd());
+        boolean isBadgeExists = badgeTimelineRepository.existsById(1);
+        if (isBadgeExists) {
+            List<BadgeTimeline> list = badgeTimelineServiceImpl.getAll();
+            List<BadgeTimelineDetail> detail_list = new ArrayList<BadgeTimelineDetail>();
+            for (int c = 0; c < list.size(); c++) {
+                BadgeTimeline badgeTimeline = list.get(c);
+                BadgeTimelineDetail badgeTimelineDetail = new BadgeTimelineDetail();
+                int badgeId = badgeTimeline.getBadgeId();
+                String badgeName = "Hello Security!";
+                if (badgeId == 1) {
+                    badgeName = "Hello Security!";
+                } else if (badgeId == 2) {
+                    badgeName = "インジェクションの学習者";
+                } else if (badgeId == 3) {
+                    badgeName = "PlaceHolder";
+                } else if (badgeId == 4) {
+                    badgeName = "ディレクトリの学習者";
+                } else if (badgeId == 5) {
+                    badgeName = "secret.txt";
+                } else if (badgeId == 6) {
+                    badgeName = "セッションの学習者";
+                } else if (badgeId == 7) {
+                    badgeName = "session.invalidate()";
+                } else if (badgeId == 8) {
+                    badgeName = "XSSの学習者";
+                } else if (badgeId == 9) {
+                    badgeName = "document.cookie";
+                } else if (badgeId == 10) {
+                    badgeName = "CSRFの学習者";
+                }
 
-            detail_list.add(badgeTimelineDetail);
+                badgeTimelineDetail.setBadgeName(badgeName);
+                String userId = badgeTimeline.getUserId();
+                String userName = userRepository.getById(userId).getName();
+                badgeTimelineDetail.setUserName(userName);
+                badgeTimelineDetail.setLtd(badgeTimeline.getLtd());
+
+                detail_list.add(badgeTimelineDetail);
+            }
+            model.addAttribute("list", detail_list);
         }
-        model.addAttribute("list", detail_list);
         return "menu";
     }
 

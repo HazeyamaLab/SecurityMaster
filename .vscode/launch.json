@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SecurityMasterApplication<SecurityMaster>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "lab.haze.SecurityMaster.SecurityMasterApplication",
+            "projectName": "SecurityMaster",
+            "args": ""
+        }
+    ]
+}

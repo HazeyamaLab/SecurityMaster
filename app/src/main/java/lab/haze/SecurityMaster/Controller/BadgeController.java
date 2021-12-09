@@ -135,7 +135,7 @@ public class BadgeController {
         persentList.add((double)Math.round(((hasBadge9/currentUser)*100) * 100)/100);
         persentList.add((double)Math.round(((hasBadge10/currentUser)*100) * 100)/100);
 
-    model.addAttribute("list", persentList);    
+    model.addAttribute("list", persentList);
     return "badges";
     }
 }

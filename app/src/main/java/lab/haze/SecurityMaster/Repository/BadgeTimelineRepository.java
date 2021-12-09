@@ -10,7 +10,7 @@ import lab.haze.SecurityMaster.Model.BadgeTimeline;
 import lab.haze.SecurityMaster.Model.UserBadge;
 
 @Repository
-public interface BadgeTimelineRepository extends JpaRepository<BadgeTimeline, String> {
+public interface BadgeTimelineRepository extends JpaRepository<BadgeTimeline, Integer> {
     List<BadgeTimeline> findAll();
     
 }

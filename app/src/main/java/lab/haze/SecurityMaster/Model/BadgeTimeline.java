@@ -14,8 +14,8 @@ import lombok.Data;
 @Table(name = "badge_timelines")
 @Data
 public class BadgeTimeline {
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private int id;
     private String userId;
     private int badgeId;
