@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    問題1 : 下のような構造のWebサーバがあります<br>
+    <code>
+|    src---pages-index.html      <br>
+|&nbsp;&nbsp;&nbsp;        |                       <br>
+|&nbsp;&nbsp;&nbsp;        |-texts---1.txt         <br>
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-2.txt         <br>
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-secret.txt    <br>
+    </code>
+    index.htmlに，どのパスを入力すればsecret.txtにアクセスが可能でしょう？<br>
+    1. <code>./../secret.txt</code><br>
+    2. <code>../../texts/secret.txt</code><br>
+    3. <code>../.././texts/secret.txt</code><br>
+    4. <code>../texts/secret.txt</code><br>
+
+    <form th:action="@{/learn/2directory/test1}" method="post">
+        <button name="ans" type="submit" value="1">1 
+        <button name="ans" type="submit" value="2">2 
+        <button name="ans" type="submit" value="3">3 
+        <button name="ans" type="submit" value="4">4
+    </form>
+</body>
+</html>

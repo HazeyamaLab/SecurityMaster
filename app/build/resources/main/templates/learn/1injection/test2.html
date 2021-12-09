@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    問題2 : 以下の選択肢の中から，SQLインジェクションの根本的解決になるものを1つ選択してください．<br>
+    1.プログラミング言語，フレームワークに備え付けられている文字列連結を利用する．<br>
+    2.SQL文の組み立てを行う際，すべての文字を分割した後連結する．<br>
+    3.ユーザからの入力文字を，文字列から文字に変換して処理を行う．<br>
+    4.SQL文の組み立てを行う際，プレースホルダを利用する．<br>
+
+    <form th:action="@{/learn/1injection/test2}" method="post">
+        <button name="ans" type="submit" value="1">1 
+        <button name="ans" type="submit" value="2">2 
+        <button name="ans" type="submit" value="3">3 
+        <button name="ans" type="submit" value="4">4
+    </form>
+</body>
+</html>

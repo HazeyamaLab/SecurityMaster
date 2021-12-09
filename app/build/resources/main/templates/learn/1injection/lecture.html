@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>具体的な脅威の内容</h2>
+    例えば，ログインの認証処理を行う例を考えてみましょう．<br>
+    データベース内のユーザのテーブルにSQLを発行する際，以下のようなSQL文を発行するとします．<br>
+    <code>SELECT id,pass FROM login_user WHERE id='ユーザのID' AND pass='ユーザのパスワード';</code><br>
+    このSQL文は，データが存在するIdとPasswordを渡すと，id,passの対が返却されるものですね．
+    ではこのユーザのIDの部分に，' OR 1=1-- という文字列を渡すと，SQL文は以下のように組み立てられます．<br>
+    <code>SELECT id,pass FROM login_user WHERE id='' OR 1=1-- AND pass='';</code><br>
+    こうなった場合，<code>id = '' OR 1=1</code>の部分は，1=1が常に真であるためtrueを返します．また--以降はSQLにおいてはコメントアウトされるので，関係がなくなります．<br>
+    正しいid,passwordの対を知らないにも関わらず，SQL文はユーザの情報を返してしまいます．こういったSQL文に不正な文字列を注入（インジェクション）する攻撃が，<strong>SQLインジェクション</strong>です．<br>
+    <h2>脅威への対処法</h2>
+    <h3>プリペアドステートメントの使用</h3>
+    多くのプログラム言語及びフレームワークでは，文字列を組み立てる際に、文字列連結演算を使用せずにプリペアドステートメントを使用して，SQL文の組み立てを行う機能が用意されています．<br>
+    プリペアドステートメントを利用すると，入力データは数値定数や文字列定数として組み込まれるため，特殊記号が含まれていた場合でもただの文字として扱われます．これにより，不正なSQL文の組み立てを防ぐことが可能です<br>
+    Javaでのプリペアドステートメント使用例<br>
+    <code>PreparedStatement stmt = connection.prepareStatement("SELECT id,pass FROM login_user WHERE id=? AND pass=?"");<br>
+        stmt.setString(1,id);<br>
+        stmt.setString(1,password);
+    </code><br>
+    <h3>SQL文を組み立てる際にエスケープ処理を施す</h3>
+    プリペアドステートメントを使用せず文字列連結を用いる場合には，SQL分で特別な意味を持つ記号文字に対してエスケープ処理を施しましょう．<br>
+    たとえば,「'」を「''」，「\」を「\\」にするなどして，SQLインジェクションを防ぐことができます．<br>
+
+    <a href="/learn/1injection/test1">問題へ進む</a>
+
+</body>
+</html>

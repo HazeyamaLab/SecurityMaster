@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    問題2 : 特にCSRF対策として，処理を実行する直前のページで再度パスワードの入力を求め，実行ページでは再度入力されたパスワードが正しい場合のみ処理を実行する場合，<strong>問題となってしまう点</strong>を選択してください<br>
+    1.画面設計の仕様変更を要する<br>
+    2.パスワードが知られていると対策にならない<br>
+    3.セッションIDが流出していると対策にならない<br>
+    4.パスワードチェックを行う際に，通信の暗号化が必要<br>
+
+    <form th:action="@{/learn/5csrf/test2}" method="post">
+        <button name="ans" type="submit" value="1">1 
+        <button name="ans" type="submit" value="2">2 
+        <button name="ans" type="submit" value="3">3 
+        <button name="ans" type="submit" value="4">4 
+    </form>
+</body>
+</html>

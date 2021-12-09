@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="navArea">
+
+        <nav>
+          <div class="inner">
+            <ul>
+              <li><a href="/menu">メインメニュー</a></li>
+              <li><a href="/learn">学習メニュー</a></li>
+              <li><a href="/status">学習の履歴</a></li>
+              <li><a href="/ranking">ユーザランキング</a></li>
+              <li><a href="/badges">獲得した実績の閲覧</a></li>
+              <li><a href="/logout">ログアウト</a></li>
+            </ul>
+          </div>
+        </nav>
+      
+        <div class="toggle_btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      
+        <div id="mask"></div>
+      
+      </div>
+      <main>
+        <h1>学習の履歴</h1>
+        学習した章: <span th:text="${count}"></span>章 / 7章<br>
+        現在の<span th:text="${user.getCompanyName()}"></span>の企業価値:<span th:text="${user.getCompanyWorth()}"></span>$<br>
+            <span th:each="component : ${list}">
+                <div class="tlbox">
+                    <span th:text="${component.ltd}"></span> 第<span th:text="${component.learnId}"></span>章<br>
+                    正解数:<span th:text="${component.correct}"></span> / <th:block th:if="${component.learnId == 1}">
+                      2
+                      </th:block>
+                      <th:block th:if="${component.learnId != 1}">
+                      4
+                      </th:block>
+                </div>
+            </span>
+      </main>
+    
+    
+
+<script>
+(function($) {
+  var $nav   = $('#navArea');
+  var $btn   = $('.toggle_btn');
+  var $mask  = $('#mask');
+  var open   = 'open'; // class
+  // menu open close
+  $btn.on( 'click', function() {
+    if ( ! $nav.hasClass( open ) ) {
+      $nav.addClass( open );
+    } else {
+      $nav.removeClass( open );
+    }
+  });
+  // mask close
+  $mask.on('click', function() {
+    $nav.removeClass( open );
+  });
+} )(jQuery);        
+    </script>
+</body>
+</html>

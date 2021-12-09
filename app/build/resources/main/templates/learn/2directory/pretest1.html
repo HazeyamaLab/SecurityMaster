@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    問題1 : 下のようなSQL組み立てを行う命令があります．<br>
+    <code>SELECT id,pass FROM login_user WHERE id='ユーザのID' AND pass='ユーザのパスワード';</code><br>
+    このSQL組み立てに対して，ユーザのID情報として渡すとSQLインジェクションが発生してしまうパラメータとして適切なものはどれでしょう？<br>
+    1. <code>' OR 1 != 1 -</code><br>
+    2. <code>' OR 1 = 1 --</code><br>
+    3. <code>' OR 1 = 1 -</code><br>
+    4. <code>' OR 1 != 1 --</code><br>
+
+    <form th:action="@{/learn/2directory/pretest1}" method="post">
+        <button name="ans" type="submit" value="1">1 
+        <button name="ans" type="submit" value="2">2 
+        <button name="ans" type="submit" value="3">3 
+        <button name="ans" type="submit" value="4">4
+    </form>
+</body>
+</html>
