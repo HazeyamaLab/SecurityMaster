@@ -3,23 +3,10 @@ server:
   servlet:
     context-path: /
 
-#local
-#spring:
-#  datasource:
-#    platform: mysql
-#    url: jdbc:mysql://localhost:3306/security_app
-#    driverClassName: com.mysql.cj.jdbc.Driver
-#    username: root
-#    password:
-
-#server
 spring:
   datasource:
     platform: mysql
-    url: jjdbc:postgresql://${host}/${database}?sslmode=require
-    username: ${POSTGRES_USER}
-    password: ${POSTGRES_PASS}
-
-logging:
-  level:
-    jdbc: off
+    url: jdbc:mysql://us-cdbr-east-05.cleardb.net/heroku_da81db2f9da3483
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: ${USER}
+    password: ${PASSWORD}

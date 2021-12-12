@@ -34,6 +34,7 @@ import lab.haze.SecurityMaster.Repository.UserStatusRepository;
 import lab.haze.SecurityMaster.Service.BadgeTimelineServiceImpl;
 import lab.haze.SecurityMaster.Service.UserBadgeServiceImpl;
 import lab.haze.SecurityMaster.Service.UserServiceImpl;
+
 @Controller
 public class LearnController {
 
@@ -104,7 +105,7 @@ public class LearnController {
             }
             model.addAttribute("count",count);
             model.addAttribute("user", user);
-            return "/status";
+            return "status";
     }
 
 
@@ -124,11 +125,11 @@ public class LearnController {
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
         }
-        return "/learn/prologue";
+        return "learn/prologue";
     }
     @GetMapping("/learn")
     public String learn(){
-        return "/learn";
+        return "learn";
     }
 
     //----------------------------------Injection---------------------------------------------------------------
@@ -136,18 +137,18 @@ public class LearnController {
     @GetMapping("/learn/1injection/intro")
     public String learn1(@AuthenticationPrincipal User user){
         httpSession.setAttribute("preWorth", user.getCompanyWorth());
-        return "/learn/1injection/intro";
+        return "learn/1injection/intro";
     }
 
     @GetMapping("/learn/1injection/lecture")
     public String lecture1(){
-        return "/learn/1injection/lecture";
+        return "learn/1injection/lecture";
     
     }
 
     @GetMapping("/learn/1injection/test1")
     public String injtest1(){
-        return "/learn/1injection/test1";
+        return "learn/1injection/test1";
     }
 
     @PostMapping("/learn/1injection/test1")
@@ -159,7 +160,7 @@ public class LearnController {
             worth = worth * 0.9;
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/1injection/inc1";
+            return "learn/1injection/inc1";
         } else {
             httpSession.setAttribute("colCount", "1");
             double worth = user.getCompanyWorth();
@@ -169,20 +170,20 @@ public class LearnController {
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/1injection/col1";
+            return "learn/1injection/col1";
         }
     }
     
     @GetMapping("/learn/1injection/inc1")
     public String injInc1(@AuthenticationPrincipal User user){
         //企業価値変更のコード
-        return "/learn/1injection/inc1";
+        return "learn/1injection/inc1";
     }
 
     @GetMapping("/learn/1injection/col1")
     public String injCol1(@AuthenticationPrincipal User user) {
         //企業価値変更のコード
-        return "/learn/1injection/col1";
+        return "learn/1injection/col1";
     }
     
     @PostMapping("/learn/1injection/test2")
@@ -193,7 +194,7 @@ public class LearnController {
             worth = worth * 0.9;
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/1injection/inc2";
+            return "learn/1injection/inc2";
         } else {
             double worth = user.getCompanyWorth();
             Random Random = new Random();
@@ -209,24 +210,24 @@ public class LearnController {
             Integer countInteger = Integer.valueOf(count);
             String countString = countInteger.toString();
             httpSession.setAttribute("colCount", countString);
-            return "/learn/1injection/col2";
+            return "learn/1injection/col2";
         }
     }
     @GetMapping("/learn/1injection/test2")
     public String injtest2(){
-        return "/learn/1injection/test2";
+        return "learn/1injection/test2";
     }
 
     @GetMapping("/learn/1injection/inc2")
     public String injInc2(@AuthenticationPrincipal User user){
         //企業価値変更のコード
-        return "/learn/1injection/inc2";
+        return "learn/1injection/inc2";
     }
 
     @GetMapping("/learn/1injection/col2")
     public String injCol2(@AuthenticationPrincipal User user) {
         //企業価値変更のコード
-        return "/learn/1injection/col2";
+        return "learn/1injection/col2";
     }
 
     @GetMapping("/learn/1injection/fin")
@@ -267,22 +268,22 @@ public class LearnController {
         userBadgeServiceImpl.updateBadge(userBadge);
         model.addAttribute("preWorth", httpSession.getAttribute("preWorth"));
         model.addAttribute("worth", user.getCompanyWorth());
-        return "/learn/1injection/fin";
+        return "learn/1injection/fin";
     }
 
     //-----------------------------------------------------------------------------------
     @GetMapping("/learn/2directory/hello")
     public String learn2hello(@AuthenticationPrincipal User user){
         httpSession.setAttribute("preWorth", user.getCompanyWorth());
-        return "/learn/2directory/hello";
+        return "learn/2directory/hello";
     }
     @GetMapping("/learn/2directory/pretest1")
     public String dirpretest1(){
-        return "/learn/2directory/pretest1";
+        return "learn/2directory/pretest1";
     }
     @GetMapping("/learn/2directory/pretest2")
     public String dirpretest2(){
-        return "/learn/2directory/pretest2";
+        return "learn/2directory/pretest2";
     }
     @PostMapping("/learn/2directory/pretest1")
     public String dirPreTest1(@RequestParam("ans") String ans,@AuthenticationPrincipal User user) {
@@ -293,7 +294,7 @@ public class LearnController {
             worth = worth * 0.9;
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/2directory/preinc1";
+            return "learn/2directory/preinc1";
         } else {
             httpSession.setAttribute("colCount", "1");
             double worth = user.getCompanyWorth();
@@ -303,7 +304,7 @@ public class LearnController {
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/2directory/precol1";
+            return "learn/2directory/precol1";
         }
     }
     @PostMapping("/learn/2directory/pretest2")
@@ -314,7 +315,7 @@ public class LearnController {
             worth = worth * 0.9;
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/2directory/preinc2";
+            return "learn/2directory/preinc2";
         } else {
             Object c =  httpSession.getAttribute("colCount");
             String cs = c.toString();
@@ -330,24 +331,24 @@ public class LearnController {
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/2directory/precol2";
+            return "learn/2directory/precol2";
         }
     }
     @GetMapping("/learn/2directory/intro")
     public String learn2intro(@AuthenticationPrincipal User user){
-        return "/learn/2directory/intro";
+        return "learn/2directory/intro";
     }
     @GetMapping("/learn/2directory/lecture")
     public String lecture2(){
-        return "/learn/2directory/lecture";
+        return "learn/2directory/lecture";
     }
     @GetMapping("/learn/2directory/test1")
     public String dirtest1(){
-        return "/learn/2directory/test1";
+        return "learn/2directory/test1";
     }
     @GetMapping("/learn/2directory/test2")
     public String dirtest2(){
-        return "/learn/2directory/test2";
+        return "learn/2directory/test2";
     }
 
     @PostMapping("/learn/2directory/test1")
@@ -358,7 +359,7 @@ public class LearnController {
             worth = worth * 0.9;
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/2directory/inc1";
+            return "learn/2directory/inc1";
         } else {
             Object c =  httpSession.getAttribute("colCount");
             String cs = c.toString();
@@ -374,7 +375,7 @@ public class LearnController {
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/2directory/col1";
+            return "learn/2directory/col1";
         }
     }
     @PostMapping("/learn/2directory/test2")
@@ -385,7 +386,7 @@ public class LearnController {
             worth = worth * 0.9;
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/2directory/inc2";
+            return "learn/2directory/inc2";
         } else {
             Object c =  httpSession.getAttribute("colCount");
             String cs = c.toString();
@@ -401,7 +402,7 @@ public class LearnController {
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/2directory/col2";
+            return "learn/2directory/col2";
         }
     }
     @GetMapping("/learn/2directory/fin")
@@ -453,21 +454,21 @@ public class LearnController {
         userBadgeServiceImpl.updateBadge(userBadge);
         model.addAttribute("preWorth", httpSession.getAttribute("preWorth"));
         model.addAttribute("worth", user.getCompanyWorth());
-        return "/learn/2directory/fin";
+        return "learn/2directory/fin";
     }
     //-----------------------------------------------------------------------------------
     @GetMapping("/learn/3session/hello")
     public String learn3hello(@AuthenticationPrincipal User user){
         httpSession.setAttribute("preWorth", user.getCompanyWorth());
-        return "/learn/3session/hello";
+        return "learn/3session/hello";
     }
     @GetMapping("/learn/3session/pretest1")
     public String dirpretest3(){
-        return "/learn/3session/pretest1";
+        return "learn/3session/pretest1";
     }
     @GetMapping("/learn/3session/pretest2")
     public String dirpretest32(){
-        return "/learn/3session/pretest2";
+        return "learn/3session/pretest2";
     }
     @PostMapping("/learn/3session/pretest1")
     public String dirPreTest33(@RequestParam("ans") String ans,@AuthenticationPrincipal User user) {
@@ -478,7 +479,7 @@ public class LearnController {
             worth = worth * 0.9;
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/3session/preinc1";
+            return "learn/3session/preinc1";
         } else {
             httpSession.setAttribute("colCount", "1");
             double worth = user.getCompanyWorth();
@@ -488,7 +489,7 @@ public class LearnController {
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/3session/precol1";
+            return "learn/3session/precol1";
         }
     }
     @PostMapping("/learn/3session/pretest2")
@@ -499,7 +500,7 @@ public class LearnController {
             worth = worth * 0.9;
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/3session/preinc2";
+            return "learn/3session/preinc2";
         } else {
             Object c =  httpSession.getAttribute("colCount");
             String cs = c.toString();
@@ -515,24 +516,24 @@ public class LearnController {
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/3session/precol2";
+            return "learn/3session/precol2";
         }
     }
     @GetMapping("/learn/3session/intro")
     public String learn3intro(@AuthenticationPrincipal User user){
-        return "/learn/3session/intro";
+        return "learn/3session/intro";
     }
     @GetMapping("/learn/3session/lecture")
     public String lecture3(){
-        return "/learn/3session/lecture";
+        return "learn/3session/lecture";
     }
     @GetMapping("/learn/3session/test1")
     public String dirtest5(){
-        return "/learn/3session/test1";
+        return "learn/3session/test1";
     }
     @GetMapping("/learn/3session/test2")
     public String dirtest3(){
-        return "/learn/3session/test2";
+        return "learn/3session/test2";
     }
 
     @PostMapping("/learn/3session/test1")
@@ -543,7 +544,7 @@ public class LearnController {
             worth = worth * 0.9;
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/3session/inc1";
+            return "learn/3session/inc1";
         } else {
             Object c =  httpSession.getAttribute("colCount");
             String cs = c.toString();
@@ -559,7 +560,7 @@ public class LearnController {
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/3session/col1";
+            return "learn/3session/col1";
         }
     }
     @PostMapping("/learn/3session/test2")
@@ -570,7 +571,7 @@ public class LearnController {
             worth = worth * 0.9;
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/3session/inc2";
+            return "learn/3session/inc2";
         } else {
             Object c =  httpSession.getAttribute("colCount");
             String cs = c.toString();
@@ -586,7 +587,7 @@ public class LearnController {
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/3session/col2";
+            return "learn/3session/col2";
         }
     }
     @GetMapping("/learn/3session/fin")
@@ -634,7 +635,7 @@ public class LearnController {
         userBadgeServiceImpl.updateBadge(userBadge);
         model.addAttribute("preWorth", httpSession.getAttribute("preWorth"));
         model.addAttribute("worth", user.getCompanyWorth());
-        return "/learn/3session/fin";
+        return "learn/3session/fin";
     }
 
     //--------------------------------------------------------------------------------------
@@ -643,15 +644,15 @@ public class LearnController {
     @GetMapping("/learn/4xss/hello")
     public String learn4hello(@AuthenticationPrincipal User user){
         httpSession.setAttribute("preWorth", user.getCompanyWorth());
-        return "/learn/4xss/hello";
+        return "learn/4xss/hello";
     }
     @GetMapping("/learn/4xss/pretest1")
     public String dirpretest34(){
-        return "/learn/4xss/pretest1";
+        return "learn/4xss/pretest1";
     }
     @GetMapping("/learn/4xss/pretest2")
     public String dirpretest35(){
-        return "/learn/4xss/pretest2";
+        return "learn/4xss/pretest2";
     }
     @PostMapping("/learn/4xss/pretest1")
     public String dirPreTest36(@RequestParam("ans") String ans,@AuthenticationPrincipal User user) {
@@ -662,7 +663,7 @@ public class LearnController {
             worth = worth * 0.9;
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/4xss/preinc1";
+            return "learn/4xss/preinc1";
         } else {
             httpSession.setAttribute("colCount", "1");
             double worth = user.getCompanyWorth();
@@ -672,7 +673,7 @@ public class LearnController {
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/4xss/precol1";
+            return "learn/4xss/precol1";
         }
     }
     @PostMapping("/learn/4xss/pretest2")
@@ -683,7 +684,7 @@ public class LearnController {
             worth = worth * 0.9;
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/4xss/preinc2";
+            return "learn/4xss/preinc2";
         } else {
             Object c =  httpSession.getAttribute("colCount");
             String cs = c.toString();
@@ -699,24 +700,24 @@ public class LearnController {
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/4xss/precol2";
+            return "learn/4xss/precol2";
         }
     }
     @GetMapping("/learn/4xss/intro")
     public String learn4intro(@AuthenticationPrincipal User user){
-        return "/learn/4xss/intro";
+        return "learn/4xss/intro";
     }
     @GetMapping("/learn/4xss/lecture")
     public String lecture4(){
-        return "/learn/4xss/lecture";
+        return "learn/4xss/lecture";
     }
     @GetMapping("/learn/4xss/test1")
     public String dirtest6(){
-        return "/learn/4xss/test1";
+        return "learn/4xss/test1";
     }
     @GetMapping("/learn/4xss/test2")
     public String dirtest66(){
-        return "/learn/4xss/test2";
+        return "learn/4xss/test2";
     }
 
     @PostMapping("/learn/4xss/test1")
@@ -727,7 +728,7 @@ public class LearnController {
             worth = worth * 0.9;
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/4xss/inc1";
+            return "learn/4xss/inc1";
         } else {
             Object c =  httpSession.getAttribute("colCount");
             String cs = c.toString();
@@ -743,7 +744,7 @@ public class LearnController {
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/4xss/col1";
+            return "learn/4xss/col1";
         }
     }
     @PostMapping("/learn/4xss/test2")
@@ -754,7 +755,7 @@ public class LearnController {
             worth = worth * 0.9;
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/4xss/inc2";
+            return "learn/4xss/inc2";
         } else {
             Object c =  httpSession.getAttribute("colCount");
             String cs = c.toString();
@@ -770,7 +771,7 @@ public class LearnController {
             System.out.println(worth);
             user.setCompanyWorth((int) worth);
             userServiceImpl.updateWorth(user);
-            return "/learn/4xss/col2";
+            return "learn/4xss/col2";
         }
     }
     @GetMapping("/learn/4xss/fin")
@@ -818,7 +819,7 @@ public class LearnController {
         userBadgeServiceImpl.updateBadge(userBadge);
         model.addAttribute("preWorth", httpSession.getAttribute("preWorth"));
         model.addAttribute("worth", user.getCompanyWorth());
-        return "/learn/4xss/fin";
+        return "learn/4xss/fin";
     }
 
      //--------------------------------------------------------------------------------------
@@ -827,15 +828,15 @@ public class LearnController {
      @GetMapping("/learn/5csrf/hello")
      public String learn5hello(@AuthenticationPrincipal User user){
          httpSession.setAttribute("preWorth", user.getCompanyWorth());
-         return "/learn/5csrf/hello";
+         return "learn/5csrf/hello";
      }
      @GetMapping("/learn/5csrf/pretest1")
      public String dirpretest345(){
-         return "/learn/5csrf/pretest1";
+         return "learn/5csrf/pretest1";
      }
      @GetMapping("/learn/5csrf/pretest2")
      public String dirpretest356(){
-         return "/learn/5csrf/pretest2";
+         return "learn/5csrf/pretest2";
      }
      @PostMapping("/learn/5csrf/pretest1")
      public String dirPreTest367(@RequestParam("ans") String ans,@AuthenticationPrincipal User user) {
@@ -846,7 +847,7 @@ public class LearnController {
              worth = worth * 0.9;
              user.setCompanyWorth((int) worth);
              userServiceImpl.updateWorth(user);
-             return "/learn/5csrf/preinc1";
+             return "learn/5csrf/preinc1";
          } else {
              httpSession.setAttribute("colCount", "1");
              double worth = user.getCompanyWorth();
@@ -856,7 +857,7 @@ public class LearnController {
              System.out.println(worth);
              user.setCompanyWorth((int) worth);
              userServiceImpl.updateWorth(user);
-             return "/learn/5csrf/precol1";
+             return "learn/5csrf/precol1";
          }
      }
      @PostMapping("/learn/5csrf/pretest2")
@@ -867,7 +868,7 @@ public class LearnController {
              worth = worth * 0.9;
              user.setCompanyWorth((int) worth);
              userServiceImpl.updateWorth(user);
-             return "/learn/5csrf/preinc2";
+             return "learn/5csrf/preinc2";
          } else {
              Object c =  httpSession.getAttribute("colCount");
              String cs = c.toString();
@@ -883,24 +884,24 @@ public class LearnController {
              System.out.println(worth);
              user.setCompanyWorth((int) worth);
              userServiceImpl.updateWorth(user);
-             return "/learn/5csrf/precol2";
+             return "learn/5csrf/precol2";
          }
      }
      @GetMapping("/learn/5csrf/intro")
      public String learn5intro(@AuthenticationPrincipal User user){
-         return "/learn/5csrf/intro";
+         return "learn/5csrf/intro";
      }
      @GetMapping("/learn/5csrf/lecture")
      public String lecture45(){
-         return "/learn/5csrf/lecture";
+         return "learn/5csrf/lecture";
      }
      @GetMapping("/learn/5csrf/test1")
      public String dirtest67(){
-         return "/learn/5csrf/test1";
+         return "learn/5csrf/test1";
      }
      @GetMapping("/learn/5csrf/test2")
      public String dirtest668(){
-         return "/learn/5csrf/test2";
+         return "learn/5csrf/test2";
      }
  
      @PostMapping("/learn/5csrf/test1")
@@ -911,7 +912,7 @@ public class LearnController {
              worth = worth * 0.9;
              user.setCompanyWorth((int) worth);
              userServiceImpl.updateWorth(user);
-             return "/learn/5csrf/inc1";
+             return "learn/5csrf/inc1";
          } else {
              Object c =  httpSession.getAttribute("colCount");
              String cs = c.toString();
@@ -927,7 +928,7 @@ public class LearnController {
              System.out.println(worth);
              user.setCompanyWorth((int) worth);
              userServiceImpl.updateWorth(user);
-             return "/learn/5csrf/col1";
+             return "learn/5csrf/col1";
          }
      }
      @PostMapping("/learn/5csrf/test2")
@@ -938,7 +939,7 @@ public class LearnController {
              worth = worth * 0.9;
              user.setCompanyWorth((int) worth);
              userServiceImpl.updateWorth(user);
-             return "/learn/5csrf/inc2";
+             return "learn/5csrf/inc2";
          } else {
              Object c =  httpSession.getAttribute("colCount");
              String cs = c.toString();
@@ -954,7 +955,7 @@ public class LearnController {
              System.out.println(worth);
              user.setCompanyWorth((int) worth);
              userServiceImpl.updateWorth(user);
-             return "/learn/5csrf/col2";
+             return "learn/5csrf/col2";
          }
      }
      @GetMapping("/learn/5csrf/fin")
@@ -1002,7 +1003,7 @@ public class LearnController {
          userBadgeServiceImpl.updateBadge(userBadge);
          model.addAttribute("preWorth", httpSession.getAttribute("preWorth"));
          model.addAttribute("worth", user.getCompanyWorth());
-         return "/learn/5csrf/fin";
+         return "learn/5csrf/fin";
      }
 
 
