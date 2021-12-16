@@ -979,10 +979,10 @@ public class LearnController {
              
          }
          
-         if(count == 4 && !userBadge.isBadge10()){
+         if(count == 4 && !userBadge.isBadge11()){
              BadgeTimeline badgeTimeline = new BadgeTimeline();
-             userBadge.setBadge10(true);
-             badgeTimeline.setBadgeId(10);
+             userBadge.setBadge11(true);
+             badgeTimeline.setBadgeId(11);
              badgeTimeline.setUserId(user.getId());
              LocalDateTime now = LocalDateTime.now();
              DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");

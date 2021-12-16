@@ -60,6 +60,8 @@ public class BadgeController {
         double hasBadge18 = 0;
         double hasBadge19 = 0;
         double hasBadge20 = 0;
+        double hasBadge21 = 0;
+        double hasBadge22 = 0;
         for(int i = 0;i < currentUser;i++){
             if(userBadgeList.get(i).isBadge1()){
                 hasBadge1 ++;
@@ -91,38 +93,43 @@ public class BadgeController {
             if(userBadgeList.get(i).isBadge10()){
                 hasBadge10 ++;
             }
-            /*
             if(userBadgeList.get(i).isBadge11()){
-                hasBadge1 ++;
+                hasBadge11 ++;
             }
-            if(userBadgeList.get(i).isBadge2()){
-                hasBadge2 ++;
+            if(userBadgeList.get(i).isBadge12()){
+                hasBadge12 ++;
             }
-            if(userBadgeList.get(i).isBadge3()){
-                hasBadge3 ++;
+            if(userBadgeList.get(i).isBadge13()){
+                hasBadge13 ++;
             }
-            if(userBadgeList.get(i).isBadge4()){
-                hasBadge4 ++;
+            if(userBadgeList.get(i).isBadge14()){
+                hasBadge14 ++;
             }
-            if(userBadgeList.get(i).isBadge5()){
-                hasBadge5 ++;
+            if(userBadgeList.get(i).isBadge15()){
+                hasBadge15 ++;
             }
-            if(userBadgeList.get(i).isBadge6()){
-                hasBadge6 ++;
+            if(userBadgeList.get(i).isBadge16()){
+                hasBadge16 ++;
             }
-            if(userBadgeList.get(i).isBadge7()){
-                hasBadge7 ++;
+            if(userBadgeList.get(i).isBadge17()){
+                hasBadge17 ++;
             }
-            if(userBadgeList.get(i).isBadge8()){
-                hasBadge8 ++;
+            if(userBadgeList.get(i).isBadge18()){
+                hasBadge18 ++;
             }
-            if(userBadgeList.get(i).isBadge9()){
-                hasBadge9 ++;
+            if(userBadgeList.get(i).isBadge19()){
+                hasBadge19 ++;
             }
-            if(userBadgeList.get(i).isBadge10()){
-                hasBadge10 ++;
+            if (userBadgeList.get(i).isBadge20()) {
+                hasBadge20++;
             }
-            */
+            if(userBadgeList.get(i).isBadge21()){
+                hasBadge21 ++;
+            }
+            if(userBadgeList.get(i).isBadge22()){
+                hasBadge22 ++;
+            }
+            
         }
         persentList.add((double)Math.round(((hasBadge1/currentUser)*100) * 100)/100);
         persentList.add((double)Math.round(((hasBadge2/currentUser)*100) * 100)/100);
@@ -134,6 +141,18 @@ public class BadgeController {
         persentList.add((double)Math.round(((hasBadge8/currentUser)*100) * 100)/100);
         persentList.add((double)Math.round(((hasBadge9/currentUser)*100) * 100)/100);
         persentList.add((double)Math.round(((hasBadge10/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge11/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge12/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge13/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge14/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge15/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge16/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge17/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge18/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge19/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge20/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge21/currentUser)*100) * 100)/100);
+        persentList.add((double)Math.round(((hasBadge22/currentUser)*100) * 100)/100);
 
     model.addAttribute("list", persentList);
     return "badges";
