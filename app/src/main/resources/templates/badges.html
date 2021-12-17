@@ -285,6 +285,282 @@
                 CSRFを学習修了
             </td>
         </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge11() == true}">
+                    Password,please
+                </th:block>
+                <th:block th:if="${userBadge.isBadge11() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge11() == true}">
+                    <img th:src="@{/imgs/silv.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge11() == false}">
+                </th:block>
+            </td>
+            <td>
+                <span th:text="${list[10]}"></span>%
+            </td>
+            <td>
+                CSRFを満点で修了
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge12() == true}">
+                    HTTP ヘッダインジェクションの学習者
+                </th:block>
+                <th:block th:if="${userBadge.isBadge12() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge12() == true}">
+                    <img th:src="@{/imgs/broz.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge12() == false}">
+                </th:block>
+            </td>
+            <td>
+                <span th:text="${list[11]}"></span>%
+            </td>
+            <td>
+                HTTP ヘッダインジェクションを学習修了
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge13() == true}">
+                    Set-Cookie-Click 
+                </th:block>
+                <th:block th:if="${userBadge.isBadge13() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge13() == true}">
+                    <img th:src="@{/imgs/silv.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge13() == false}">
+                </th:block>
+            </td>
+            <td>
+                <span th:text="${list[12]}"></span>%
+            </td>
+            <td>
+                HTTP ヘッダインジェクションを満点で修了
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge14() == true}">
+                    クリックジャッキングの学習者
+                </th:block>
+                <th:block th:if="${userBadge.isBadge14() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge14() == true}">
+                    <img th:src="@{/imgs/broz.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge14() == false}">
+                </th:block>
+            </td>
+            <td>
+                <span th:text="${list[13]}"></span>%
+            </td>
+            <td>
+                クリックジャッキングを学習修了
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge15() == true}">
+                    Keyboard and Mouse
+                </th:block>
+                <th:block th:if="${userBadge.isBadge15() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge15() == true}">
+                    <img th:src="@{/imgs/silv.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge15() == false}">
+                </th:block>
+            </td>
+            <td>
+                <span th:text="${list[14]}"></span>%
+            </td>
+            <td>
+                クリックジャッキングを満点で修了
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge16() == true}">
+                    学習修了
+                </th:block>
+                <th:block th:if="${userBadge.isBadge16() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge16() == true}">
+                    <img th:src="@{/imgs/gold.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge16() == false}">
+                </th:block>
+            </td>
+            <td>
+                <span th:text="${list[15]}"></span>%
+            </td>
+            <td>
+                すべての章を学習した
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge17() == true}">
+                    アソシエイト・セキュリティマスター
+                </th:block>
+                <th:block th:if="${userBadge.isBadge17() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge17() == true}">
+                    <img th:src="@{/imgs/plat.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge17() == false}">
+                </th:block>
+            </td>
+            <td>
+                <span th:text="${list[16]}"></span>%
+            </td>
+            <td>
+                すべての章を満点で学習修了した
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge18() == true}">
+                    中小企業
+                </th:block>
+                <th:block th:if="${userBadge.isBadge18() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge18() == true}">
+                    <img th:src="@{/imgs/broz.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge18() == false}">
+                </th:block>
+            </td>
+            <td>
+                <span th:text="${list[17]}"></span>%
+            </td>
+            <td>
+                企業価値が3,000,000$を上回る
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge19() == true}">
+                    マザーズ上場
+                </th:block>
+                <th:block th:if="${userBadge.isBadge19() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge19() == true}">
+                    <img th:src="@{/imgs/silv.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge19() == false}">
+                </th:block>
+            </td>
+            <td>
+                <span th:text="${list[18]}"></span>%
+            </td>
+            <td>
+                企業価値が6,000,000$を上回る
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge20() == true}">
+                    2部上場
+                </th:block>
+                <th:block th:if="${userBadge.isBadge20() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge20() == true}">
+                    <img th:src="@{/imgs/gold.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge20() == false}">
+                </th:block>
+            </td>
+            <td>
+                <span th:text="${list[19]}"></span>%
+            </td>
+            <td>
+                企業価値が9,000,000$を上回る
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge21() == true}">
+                    1部上場
+                </th:block>
+                <th:block th:if="${userBadge.isBadge21() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge21() == true}">
+                    <img th:src="@{/imgs/plat.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge21() == false}">
+                </th:block>
+            </td>
+            <td>
+                <span th:text="${list[20]}"></span>%
+            </td>
+            <td>
+                企業価値が12,000,000$を上回る
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:if="${userBadge.isBadge22() == true}">
+                    1部上場
+                </th:block>
+                <th:block th:if="${userBadge.isBadge22() == false}">
+                    未達成の実績
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${userBadge.isBadge22() == true}">
+                    <img th:src="@{/imgs/diam.png}" alt="">
+                </th:block>
+                <th:block th:if="${userBadge.isBadge22() == false}">
+                </th:block>
+            </td>
+            <td>
+                <span th:text="${list[20]}"></span>%
+            </td>
+            <td>
+                企業価値が12,000,000$を上回る
+            </td>
+        </tr>
 
     </table>
 </main>
