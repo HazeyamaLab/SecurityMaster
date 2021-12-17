@@ -94,8 +94,31 @@ public class AuthController {
                     badgeName = "document.cookie";
                 } else if (badgeId == 10) {
                     badgeName = "CSRFの学習者";
+                } else if (badgeId == 11) {
+                    badgeName = "Password,please";
+                } else if (badgeId == 12) {
+                    badgeName = "HTTP ヘッダインジェクションの学習者";
+                } else if (badgeId == 13) {
+                    badgeName = "Set-Cookie-Click ";
+                } else if (badgeId == 14) {
+                    badgeName = "クリックジャッキングの学習者";
+                } else if (badgeId == 15) {
+                    badgeName = "Keyboard and Mouse";
+                } else if (badgeId == 16) {
+                    badgeName = "学習修了";
+                } else if (badgeId == 17) {
+                    badgeName = "アソシエイト・セキュリティマスター";
+                } else if (badgeId == 18) {
+                    badgeName = "中小企業";
+                } else if (badgeId == 19) {
+                    badgeName = "マザーズ上場";
+                } else if (badgeId == 20) {
+                    badgeName = "2部上場";
+                } else if (badgeId == 21) {
+                    badgeName = "1部上場";
+                } else if (badgeId == 22) {
+                    badgeName = "SecurityMaster";
                 }
-
                 badgeTimelineDetail.setBadgeName(badgeName);
                 String userId = badgeTimeline.getUserId();
                 String userName = userRepository.getById(userId).getName();
