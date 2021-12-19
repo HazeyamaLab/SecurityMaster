@@ -133,6 +133,33 @@ public class AuthController {
                     badgeTimeline.setLtd(now.format(formatter));
                     badgeTimelineRepository.save(badgeTimeline);
         }
+        if (userBadge.isBadge1() && userBadge.isBadge2() &&  userBadge.isBadge4()
+                 && userBadge.isBadge6()  && userBadge.isBadge8()
+                 && userBadge.isBadge10() && userBadge.isBadge12() && userBadge.isBadge14() ) {
+                    userBadge.setBadge16(true);
+                    BadgeTimeline badgeTimeline = new BadgeTimeline();
+                    badgeTimeline.setBadgeId(16);
+                    badgeTimeline.setUserId(user.getId());
+                    LocalDateTime now = LocalDateTime.now();
+                    now.plusHours(9);
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    badgeTimeline.setLtd(now.format(formatter));
+                    badgeTimelineRepository.save(badgeTimeline);
+        }
+        if (userBadge.isBadge1() && userBadge.isBadge2() && userBadge.isBadge3() && userBadge.isBadge4()
+                && userBadge.isBadge5() && userBadge.isBadge6() && userBadge.isBadge7() && userBadge.isBadge8()
+                && userBadge.isBadge9() && userBadge.isBadge10() && userBadge.isBadge11() && userBadge.isBadge12()
+                && userBadge.isBadge13() && userBadge.isBadge14() && userBadge.isBadge15()) {
+                    userBadge.setBadge17(true);
+                    BadgeTimeline badgeTimeline = new BadgeTimeline();
+                    badgeTimeline.setBadgeId(17);
+                    badgeTimeline.setUserId(user.getId());
+                    LocalDateTime now = LocalDateTime.now();
+                    now.plusHours(9);
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    badgeTimeline.setLtd(now.format(formatter));
+                    badgeTimelineRepository.save(badgeTimeline);
+        }
 
         model.addAttribute("user", user);
         boolean isBadgeExists = badgeTimelineRepository.existsById(4);

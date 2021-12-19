@@ -1207,6 +1207,193 @@ public class LearnController {
          model.addAttribute("worth", user.getCompanyWorth());
          return "learn/6hedder/fin";
      }
+      //--------------------------------------------------------------------------------------
+
+
+      @GetMapping("/learn/7jack/hello")
+      public String learn75hello2(@AuthenticationPrincipal User user){
+          httpSession.setAttribute("preWorth", user.getCompanyWorth());
+          return "learn/7jack/hello";
+      }
+      @GetMapping("/learn/7jack/pretest1")
+      public String dirpretest34572(){
+          return "learn/7jack/pretest1";
+      }
+      @GetMapping("/learn/7jack/pretest2")
+      public String dirpretest35672(){
+          return "learn/7jack/pretest2";
+      }
+      @PostMapping("/learn/7jack/pretest1")
+      public String dirPreTest36772(@RequestParam("ans") String ans,@AuthenticationPrincipal User user) {
+          int ians = Integer.parseInt(ans);
+          if (ians != 4) {
+              httpSession.setAttribute("colCount", "0");
+              double worth = user.getCompanyWorth();
+              worth = worth * 0.9;
+              user.setCompanyWorth((int) worth);
+              userServiceImpl.updateWorth(user);
+              return "learn/7jack/preinc1";
+          } else {
+              httpSession.setAttribute("colCount", "1");
+              double worth = user.getCompanyWorth();
+              Random Random = new Random();
+              double ratio = Random.nextDouble();
+              worth = worth * (1.0 +(0.2 * ratio));
+              System.out.println(worth);
+              user.setCompanyWorth((int) worth);
+              userServiceImpl.updateWorth(user);
+              return "learn/7jack/precol1";
+          }
+      }
+      @PostMapping("/learn/7jack/pretest2")
+      public String dirPreTest272425(@RequestParam("ans") String ans,@AuthenticationPrincipal User user) {
+          int ians = Integer.parseInt(ans);
+          if (ians != 3) {
+              double worth = user.getCompanyWorth();
+              worth = worth * 0.9;
+              user.setCompanyWorth((int) worth);
+              userServiceImpl.updateWorth(user);
+              return "learn/7jack/preinc2";
+          } else {
+              Object c =  httpSession.getAttribute("colCount");
+              String cs = c.toString();
+              int count = Integer.parseInt(cs);
+              count += 1;
+              Integer countInteger = Integer.valueOf(count);
+              String countString = countInteger.toString();
+              httpSession.setAttribute("colCount", countString);
+              double worth = user.getCompanyWorth();
+              Random Random = new Random();
+              double ratio = Random.nextDouble();
+              worth = worth * (1.0 +(0.2 * ratio));
+              System.out.println(worth);
+              user.setCompanyWorth((int) worth);
+              userServiceImpl.updateWorth(user);
+              return "learn/7jack/precol2";
+          }
+      }
+      @GetMapping("/learn/7jack/intro")
+      public String learn527ntro(@AuthenticationPrincipal User user){
+          return "learn/7jack/intro";
+      }
+      @GetMapping("/learn/7jack/lecture")
+      public String lecture4275(){
+          return "learn/7jack/lecture";
+      }
+      @GetMapping("/learn/7jack/test1")
+      public String dirtest6277(){
+          return "learn/7jack/test1";
+      }
+      @GetMapping("/learn/7jack/test2")
+      public String dirtest66278(){
+          return "learn/7jack/test2";
+      }
+  
+      @PostMapping("/learn/7jack/test1")
+      public String dirTest116277(@RequestParam("ans") String ans,@AuthenticationPrincipal User user) {
+          int ians = Integer.parseInt(ans);
+          if (ians != 2) {
+              double worth = user.getCompanyWorth();
+              worth = worth * 0.9;
+              user.setCompanyWorth((int) worth);
+              userServiceImpl.updateWorth(user);
+              return "learn/7jack/inc1";
+          } else {
+              Object c =  httpSession.getAttribute("colCount");
+              String cs = c.toString();
+              int count = Integer.parseInt(cs);
+              count += 1;
+              Integer countInteger = Integer.valueOf(count);
+              String countString = countInteger.toString();
+              httpSession.setAttribute("colCount", countString);
+              double worth = user.getCompanyWorth();
+              Random Random = new Random();
+              double ratio = Random.nextDouble();
+              worth = worth * (1.0 +(0.2 * ratio));
+              System.out.println(worth);
+              user.setCompanyWorth((int) worth);
+              userServiceImpl.updateWorth(user);
+              return "learn/7jack/col1";
+          }
+      }
+      @PostMapping("/learn/7jack/test2")
+      public String dirTest222745(@RequestParam("ans") String ans,@AuthenticationPrincipal User user) {
+          int ians = Integer.parseInt(ans);
+          if (ians != 4) {
+              double worth = user.getCompanyWorth();
+              worth = worth * 0.9;
+              user.setCompanyWorth((int) worth);
+              userServiceImpl.updateWorth(user);
+              return "learn/7jack/inc2";
+          } else {
+              Object c =  httpSession.getAttribute("colCount");
+              String cs = c.toString();
+              int count = Integer.parseInt(cs);
+              count += 1;
+              Integer countInteger = Integer.valueOf(count);
+              String countString = countInteger.toString();
+              httpSession.setAttribute("colCount", countString);
+              double worth = user.getCompanyWorth();
+              Random Random = new Random();
+              double ratio = Random.nextDouble();
+              worth = worth * (1.0 +(0.2 * ratio));
+              System.out.println(worth);
+              user.setCompanyWorth((int) worth);
+              userServiceImpl.updateWorth(user);
+              return "learn/7jack/col2";
+          }
+      }
+      @GetMapping("/learn/7jack/fin")
+      public String dirfin4275(Model model,@AuthenticationPrincipal User user){
+          Object c =  httpSession.getAttribute("colCount");
+          String cs = c.toString();
+          int count = Integer.parseInt(cs);
+          UserBadge userBadge = userBadgeServiceImpl.getUserBadge(user.getId());
+          
+          System.out.println(count);
+          if(!userBadge.isBadge14()){
+              BadgeTimeline badgeTimeline = new BadgeTimeline();
+              userBadge.setBadge14(true);
+              badgeTimeline.setBadgeId(14);
+              badgeTimeline.setUserId(user.getId());
+              LocalDateTime now = LocalDateTime.now();
+              now.plusHours(9);
+              DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+              badgeTimeline.setLtd(now.format(formatter));
+              badgeTimelineRepository.save(badgeTimeline);
+              badgeTimelineRepository.flush();
+              
+          }
+          
+          if(count == 4 && !userBadge.isBadge15()){
+              BadgeTimeline badgeTimeline = new BadgeTimeline();
+              userBadge.setBadge15(true);
+              badgeTimeline.setBadgeId(15);
+              badgeTimeline.setUserId(user.getId());
+              LocalDateTime now = LocalDateTime.now();
+              now.plusHours(9);
+              DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+              badgeTimeline.setLtd(now.format(formatter));
+              badgeTimelineRepository.save(badgeTimeline);
+              badgeTimelineRepository.flush();
+          }
+          
+          UserStatus userStatus = new UserStatus();
+          userStatus.setUserId(user.getId());
+          userStatus.setLearnId(5);
+          LocalDateTime now = LocalDateTime.now();
+          now.plusHours(9);
+          DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+          userStatus.setLtd(now.format(formatter));
+          userStatus.setCorrect(count);
+          userStatusRepository.save(userStatus);
+  
+          userBadgeServiceImpl.updateBadge(userBadge);
+          model.addAttribute("preWorth", httpSession.getAttribute("preWorth"));
+          model.addAttribute("worth", user.getCompanyWorth());
+          return "learn/7jack/fin";
+      }
+     
 
 
 
