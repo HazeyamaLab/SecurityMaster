@@ -247,6 +247,7 @@ public class LearnController {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
+            badgeTimelineRepository.flush();
         }
         if(count == 2 && !userBadge.isBadge3()){
             userBadge.setBadge3(true);
@@ -257,6 +258,7 @@ public class LearnController {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
+            badgeTimelineRepository.flush();
         }
         
         UserStatus userStatus = new UserStatus();
@@ -416,7 +418,6 @@ public class LearnController {
         int count = Integer.parseInt(cs);
         UserBadge userBadge = userBadgeServiceImpl.getUserBadge(user.getId());
         
-        System.out.println("=======================================");
         System.out.println(count);
         if(!userBadge.isBadge4()){
             BadgeTimeline badgeTimeline = new BadgeTimeline();
@@ -429,11 +430,10 @@ public class LearnController {
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
             badgeTimelineRepository.flush();
-            System.out.println("=======================================");
+            
         }
-        System.out.println("=======================================");
+
         if(count == 4 && !userBadge.isBadge5()){
-            System.out.println("=======================================");
             BadgeTimeline badgeTimeline = new BadgeTimeline();
             userBadge.setBadge5(true);
             badgeTimeline.setBadgeId(5);
@@ -442,10 +442,9 @@ public class LearnController {
             now.plusHours(9);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
-            System.out.println("=======================================");
             badgeTimelineRepository.save(badgeTimeline);
             badgeTimelineRepository.flush();
-            System.out.println("=======================================");
+           
         }
         
         UserStatus userStatus = new UserStatus();

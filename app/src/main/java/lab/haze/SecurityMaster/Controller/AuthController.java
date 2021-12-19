@@ -83,6 +83,7 @@ public class AuthController {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
+            badgeTimelineRepository.flush();
         }
         if (!userBadge.isBadge19() && user.getCompanyWorth() >= 6000000) {
             userBadge.setBadge19(true);
@@ -94,6 +95,7 @@ public class AuthController {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
+            badgeTimelineRepository.flush();
         }
         if (!userBadge.isBadge20() && user.getCompanyWorth() >= 9000000) {
             userBadge.setBadge20(true);
@@ -105,6 +107,7 @@ public class AuthController {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
+            badgeTimelineRepository.flush();
         }
         if (!userBadge.isBadge21() && user.getCompanyWorth() >= 12000000) {
             userBadge.setBadge21(true);
@@ -116,6 +119,7 @@ public class AuthController {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
+            badgeTimelineRepository.flush();
         }
         if (userBadge.isBadge1() && userBadge.isBadge2() && userBadge.isBadge3() && userBadge.isBadge4()
                 && userBadge.isBadge5() && userBadge.isBadge6() && userBadge.isBadge7() && userBadge.isBadge8()
@@ -132,6 +136,7 @@ public class AuthController {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
                     badgeTimeline.setLtd(now.format(formatter));
                     badgeTimelineRepository.save(badgeTimeline);
+                    badgeTimelineRepository.flush();
         }
         if (userBadge.isBadge1() && userBadge.isBadge2() &&  userBadge.isBadge4()
                  && userBadge.isBadge6()  && userBadge.isBadge8()
@@ -145,6 +150,7 @@ public class AuthController {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
                     badgeTimeline.setLtd(now.format(formatter));
                     badgeTimelineRepository.save(badgeTimeline);
+                    badgeTimelineRepository.flush();
         }
         if (userBadge.isBadge1() && userBadge.isBadge2() && userBadge.isBadge3() && userBadge.isBadge4()
                 && userBadge.isBadge5() && userBadge.isBadge6() && userBadge.isBadge7() && userBadge.isBadge8()
@@ -159,6 +165,7 @@ public class AuthController {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
                     badgeTimeline.setLtd(now.format(formatter));
                     badgeTimelineRepository.save(badgeTimeline);
+                    badgeTimelineRepository.flush();
         }
 
         model.addAttribute("user", user);
