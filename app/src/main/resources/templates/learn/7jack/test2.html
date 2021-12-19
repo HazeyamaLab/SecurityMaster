@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    問題2 : HTTPヘッダインジェクション対策として改行コードを適切に処理するヘッダ出力用APIを利用できない場合は、
+    改行を許可しないよう、開発者自身で適切な処理を実装する必要がありますが，
+    この場合の適切な処置に<strong>含まれない</strong>ものを1つ選択してください．
+    1.改行の後に空白を入れることで継続行として処理する<br>
+    2.改行コード以降の文字を削除する<br>
+    3.改行が含まれていたらウェブページ生成の処理を中止する<br>
+    4.改行の制御コードを検知した場合，一旦削除し同じ制御コードを自動生成する．<br>
+
+    <form th:action="@{/learn/7jack/test2}" method="post">
+        <button name="ans" type="submit" value="1">1 
+        <button name="ans" type="submit" value="2">2 
+        <button name="ans" type="submit" value="3">3 
+        <button name="ans" type="submit" value="4">4 
+    </form>
+</body>
+</html>
