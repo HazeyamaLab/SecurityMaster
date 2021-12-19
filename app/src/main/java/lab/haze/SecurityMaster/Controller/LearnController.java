@@ -1392,6 +1392,36 @@ public class LearnController {
           model.addAttribute("worth", user.getCompanyWorth());
           return "learn/7jack/fin";
       }
+
+      @GetMapping("/learn/lectures/1")
+      public String lec1(){
+          return "learn/lectures/1";
+      }
+      @GetMapping("/learn/lectures/2")
+      public String lec2(){
+          return "learn/lectures/2";
+      }
+      @GetMapping("/learn/lectures/3")
+      public String lec3(){
+          return "learn/lectures/3";
+      }
+      @GetMapping("/learn/lectures/4")
+      public String lec4(){
+          return "learn/lectures/4";
+      }
+      @GetMapping("/learn/lectures/5")
+      public String lec5(){
+          return "learn/lectures/5";
+      }
+      @GetMapping("/learn/lectures/6")
+      public String lec6(){
+          return "learn/lectures/6";
+      }
+      @GetMapping("/learn/lectures/7")
+      public String lec7(){
+          return "learn/lectures/7";
+      }
+
      
 
 
