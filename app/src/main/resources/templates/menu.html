@@ -44,7 +44,7 @@
         <h3>実績解除の履歴</h3>
             <span th:each="component : ${list}">
                 <div class="tlbox">
-                    <span th:text="${component.userName}"></span>さんが<span th:text="${component.badgeName}"></span>バッジを獲得<br>
+                    <span th:text="${component.userName}"></span>さんが <span th:text="${component.badgeName}"></span> バッジを獲得<br>
                     解除日時:<span th:text="${component.ltd}"></span><br>
                 </div>
             </span>

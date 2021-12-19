@@ -1,11 +1,14 @@
 package lab.haze.SecurityMaster.Controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
 import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,6 +30,7 @@ import lab.haze.SecurityMaster.Repository.BadgeTimelineRepository;
 import lab.haze.SecurityMaster.Repository.UserBadgeRepository;
 import lab.haze.SecurityMaster.Repository.UserRepository;
 import lab.haze.SecurityMaster.Service.BadgeTimelineServiceImpl;
+import lab.haze.SecurityMaster.Service.UserBadgeServiceImpl;
 import lab.haze.SecurityMaster.Service.UserServiceImpl;
 
 @Controller
@@ -39,6 +43,9 @@ public class AuthController {
 
     @Autowired
     UserBadgeRepository userBadgeRepository;
+
+    @Autowired
+    UserBadgeServiceImpl userBadgeServiceImpl;
 
     @Autowired
     BadgeTimelineServiceImpl badgeTimelineServiceImpl;
@@ -63,9 +70,72 @@ public class AuthController {
     
     @GetMapping("/menu")
     public String menu(Model model,@AuthenticationPrincipal User user) {
-        //System.out.println(user);
+        UserBadge userBadge = new UserBadge();
+        userBadge = userBadgeServiceImpl.getUserBadge(user.getId());
+
+        if (!userBadge.isBadge18() && user.getCompanyWorth() >= 3000000) {
+            userBadge.setBadge18(true);
+            BadgeTimeline badgeTimeline = new BadgeTimeline();
+            badgeTimeline.setBadgeId(18);
+            badgeTimeline.setUserId(user.getId());
+            LocalDateTime now = LocalDateTime.now();
+            now.plusHours(9);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            badgeTimeline.setLtd(now.format(formatter));
+            badgeTimelineRepository.save(badgeTimeline);
+        }
+        if (!userBadge.isBadge19() && user.getCompanyWorth() >= 6000000) {
+            userBadge.setBadge19(true);
+            BadgeTimeline badgeTimeline = new BadgeTimeline();
+            badgeTimeline.setBadgeId(19);
+            badgeTimeline.setUserId(user.getId());
+            LocalDateTime now = LocalDateTime.now();
+            now.plusHours(9);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            badgeTimeline.setLtd(now.format(formatter));
+            badgeTimelineRepository.save(badgeTimeline);
+        }
+        if (!userBadge.isBadge20() && user.getCompanyWorth() >= 9000000) {
+            userBadge.setBadge20(true);
+            BadgeTimeline badgeTimeline = new BadgeTimeline();
+            badgeTimeline.setBadgeId(20);
+            badgeTimeline.setUserId(user.getId());
+            LocalDateTime now = LocalDateTime.now();
+            now.plusHours(9);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            badgeTimeline.setLtd(now.format(formatter));
+            badgeTimelineRepository.save(badgeTimeline);
+        }
+        if (!userBadge.isBadge21() && user.getCompanyWorth() >= 12000000) {
+            userBadge.setBadge21(true);
+            BadgeTimeline badgeTimeline = new BadgeTimeline();
+            badgeTimeline.setBadgeId(21);
+            badgeTimeline.setUserId(user.getId());
+            LocalDateTime now = LocalDateTime.now();
+            now.plusHours(9);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            badgeTimeline.setLtd(now.format(formatter));
+            badgeTimelineRepository.save(badgeTimeline);
+        }
+        if (userBadge.isBadge1() && userBadge.isBadge2() && userBadge.isBadge3() && userBadge.isBadge4()
+                && userBadge.isBadge5() && userBadge.isBadge6() && userBadge.isBadge7() && userBadge.isBadge8()
+                && userBadge.isBadge9() && userBadge.isBadge10() && userBadge.isBadge11() && userBadge.isBadge12()
+                && userBadge.isBadge13() && userBadge.isBadge14() && userBadge.isBadge15() && userBadge.isBadge16()
+                && userBadge.isBadge17() && userBadge.isBadge18() && userBadge.isBadge19() && userBadge.isBadge20()
+                && userBadge.isBadge21()) {
+                    userBadge.setBadge22(true);
+                    BadgeTimeline badgeTimeline = new BadgeTimeline();
+                    badgeTimeline.setBadgeId(22);
+                    badgeTimeline.setUserId(user.getId());
+                    LocalDateTime now = LocalDateTime.now();
+                    now.plusHours(9);
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    badgeTimeline.setLtd(now.format(formatter));
+                    badgeTimelineRepository.save(badgeTimeline);
+        }
+
         model.addAttribute("user", user);
-        boolean isBadgeExists = badgeTimelineRepository.existsById(1);
+        boolean isBadgeExists = badgeTimelineRepository.existsById(4);
         if (isBadgeExists) {
             List<BadgeTimeline> list = badgeTimelineServiceImpl.getAll();
             List<BadgeTimelineDetail> detail_list = new ArrayList<BadgeTimelineDetail>();

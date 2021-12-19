@@ -121,6 +121,7 @@ public class LearnController {
             badgeTimeline.setBadgeId(1);
             badgeTimeline.setUserId(user.getId());
             LocalDateTime now = LocalDateTime.now();
+            now.plusHours(9);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
@@ -242,6 +243,7 @@ public class LearnController {
             badgeTimeline.setBadgeId(2);
             badgeTimeline.setUserId(user.getId());
             LocalDateTime now = LocalDateTime.now();
+            now.plusHours(9);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
@@ -251,6 +253,7 @@ public class LearnController {
             badgeTimeline.setBadgeId(3);
             badgeTimeline.setUserId(user.getId());
             LocalDateTime now = LocalDateTime.now();
+            now.plusHours(9);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
@@ -260,6 +263,7 @@ public class LearnController {
         userStatus.setUserId(user.getId());
         userStatus.setLearnId(1);
         LocalDateTime now = LocalDateTime.now();
+        now.plusHours(9);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         userStatus.setLtd(now.format(formatter));
         userStatus.setCorrect(count);
@@ -420,6 +424,7 @@ public class LearnController {
             badgeTimeline.setBadgeId(4);
             badgeTimeline.setUserId(user.getId());
             LocalDateTime now = LocalDateTime.now();
+            now.plusHours(9);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
@@ -434,6 +439,7 @@ public class LearnController {
             badgeTimeline.setBadgeId(5);
             badgeTimeline.setUserId(user.getId());
             LocalDateTime now = LocalDateTime.now();
+            now.plusHours(9);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             System.out.println("=======================================");
@@ -446,6 +452,7 @@ public class LearnController {
         userStatus.setUserId(user.getId());
         userStatus.setLearnId(2);
         LocalDateTime now = LocalDateTime.now();
+        now.plusHours(9);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         userStatus.setLtd(now.format(formatter));
         userStatus.setCorrect(count);
@@ -604,6 +611,7 @@ public class LearnController {
             badgeTimeline.setBadgeId(6);
             badgeTimeline.setUserId(user.getId());
             LocalDateTime now = LocalDateTime.now();
+            now.plusHours(9);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
@@ -617,6 +625,7 @@ public class LearnController {
             badgeTimeline.setBadgeId(7);
             badgeTimeline.setUserId(user.getId());
             LocalDateTime now = LocalDateTime.now();
+            now.plusHours(9);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
@@ -627,6 +636,7 @@ public class LearnController {
         userStatus.setUserId(user.getId());
         userStatus.setLearnId(3);
         LocalDateTime now = LocalDateTime.now();
+        now.plusHours(9);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         userStatus.setLtd(now.format(formatter));
         userStatus.setCorrect(count);
@@ -788,6 +798,7 @@ public class LearnController {
             badgeTimeline.setBadgeId(8);
             badgeTimeline.setUserId(user.getId());
             LocalDateTime now = LocalDateTime.now();
+            now.plusHours(9);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
@@ -801,6 +812,7 @@ public class LearnController {
             badgeTimeline.setBadgeId(9);
             badgeTimeline.setUserId(user.getId());
             LocalDateTime now = LocalDateTime.now();
+            now.plusHours(9);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             badgeTimeline.setLtd(now.format(formatter));
             badgeTimelineRepository.save(badgeTimeline);
@@ -811,6 +823,7 @@ public class LearnController {
         userStatus.setUserId(user.getId());
         userStatus.setLearnId(4);
         LocalDateTime now = LocalDateTime.now();
+        now.plusHours(9);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         userStatus.setLtd(now.format(formatter));
         userStatus.setCorrect(count);
@@ -972,6 +985,7 @@ public class LearnController {
              badgeTimeline.setBadgeId(10);
              badgeTimeline.setUserId(user.getId());
              LocalDateTime now = LocalDateTime.now();
+             now.plusHours(9);
              DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
              badgeTimeline.setLtd(now.format(formatter));
              badgeTimelineRepository.save(badgeTimeline);
@@ -985,6 +999,7 @@ public class LearnController {
              badgeTimeline.setBadgeId(11);
              badgeTimeline.setUserId(user.getId());
              LocalDateTime now = LocalDateTime.now();
+             now.plusHours(9);
              DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
              badgeTimeline.setLtd(now.format(formatter));
              badgeTimelineRepository.save(badgeTimeline);
@@ -995,6 +1010,7 @@ public class LearnController {
          userStatus.setUserId(user.getId());
          userStatus.setLearnId(5);
          LocalDateTime now = LocalDateTime.now();
+         now.plusHours(9);
          DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
          userStatus.setLtd(now.format(formatter));
          userStatus.setCorrect(count);
