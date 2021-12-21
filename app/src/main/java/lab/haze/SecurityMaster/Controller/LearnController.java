@@ -1193,7 +1193,7 @@ public class LearnController {
          
          UserStatus userStatus = new UserStatus();
          userStatus.setUserId(user.getId());
-         userStatus.setLearnId(5);
+         userStatus.setLearnId(6);
          LocalDateTime now = LocalDateTime.now();
          now.plusHours(9);
          DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -1379,7 +1379,7 @@ public class LearnController {
           
           UserStatus userStatus = new UserStatus();
           userStatus.setUserId(user.getId());
-          userStatus.setLearnId(5);
+          userStatus.setLearnId(7);
           LocalDateTime now = LocalDateTime.now();
           now.plusHours(9);
           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");

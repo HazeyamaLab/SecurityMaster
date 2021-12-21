@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    問題1 : 以下の選択肢の中から，HTTP ヘッダ・インジェクションの根本的解決になるものを1つ選択してください．<br>
+    1.外部からの入力の全てについて，改行コードを統一する．<br>
+    2.ヘッダの出力を直接行わず，ウェブアプリケーションの実行環境や言語に用意されているヘッダ出力用 API を使用する．<br>
+    3.HTTPSプロトコルを利用する．<br>
+    4.ヘッダー内でURLを出力するときは，「javascript:」で始まるURLのみを許可する．<br>
+
+    <form th:action="@{/learn/6hedder/test1}" method="post">
+        <button name="ans" type="submit" value="1">1 
+        <button name="ans" type="submit" value="2">2 
+        <button name="ans" type="submit" value="3">3 
+        <button name="ans" type="submit" value="4">4
+    </form>
+</body>
+</html>
