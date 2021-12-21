@@ -41,6 +41,7 @@ public class BadgeController {
         UserBadge userBadge = userBadgeServiceImpl.getUserBadge(id);
         model.addAttribute("userBadge", userBadge);
         double currentUser = userRepository.findAll().size();
+        currentUser = 8;
         List<Double> persentList = new ArrayList<Double>();
         List<UserBadge> userBadgeList = new ArrayList<>();
         userBadgeList = userBadgeServiceImpl.findAll();
