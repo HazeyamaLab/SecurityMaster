@@ -16,6 +16,7 @@ import lab.haze.SecurityMaster.Model.UserBadge;
 import lab.haze.SecurityMaster.Repository.UserBadgeRepository;
 import lab.haze.SecurityMaster.Repository.UserRepository;
 import lab.haze.SecurityMaster.Service.UserBadgeServiceImpl;
+import lab.haze.SecurityMaster.Service.UserServiceImpl;
 
 @Controller
 public class BadgeController {
@@ -29,6 +30,9 @@ public class BadgeController {
     @Autowired
     UserBadgeServiceImpl userBadgeServiceImpl;
 
+    @Autowired
+    UserServiceImpl userServiceImpl;
+
     @GetMapping("/badges")
     public String badges(Model model,@AuthenticationPrincipal User user) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -36,7 +40,7 @@ public class BadgeController {
         model.addAttribute("userName", user.getName());
         UserBadge userBadge = userBadgeServiceImpl.getUserBadge(id);
         model.addAttribute("userBadge", userBadge);
-        double currentUser = userBadgeServiceImpl.findAll().size();
+        double currentUser = userRepository.findAll().size();
         List<Double> persentList = new ArrayList<Double>();
         List<UserBadge> userBadgeList = new ArrayList<>();
         userBadgeList = userBadgeServiceImpl.findAll();
